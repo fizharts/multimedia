@@ -22,10 +22,10 @@ export const estadoReducer = ( state = initialState , action ) => {
 
 export const getDatos = ()=> {
     return async( dispatch )=> {
-        const res = await Axios.get(urlGeneral)
-        console.log(res)
+        const {data} = await Axios.get(urlGeneral)
+        console.log(data)
         dispatch(
-            putDatos( res )
+            putDatos( data )
         )
     }
 }
