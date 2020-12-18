@@ -1,3 +1,4 @@
 export const types = {
-    datosGenerales : '[data] datos generales'
+    datosGenerales : '[data] datos generales' ,
+    fechaDHoy : '[date] fecha de hoy'
 }

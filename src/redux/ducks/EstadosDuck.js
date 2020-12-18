@@ -3,7 +3,9 @@ import { urlGeneral } from "../../helpers/urls";
 import { types } from "../types/types";
 
 const initialState = {
-    datos : {}
+    datos : []  ,
+    parametros : [] ,
+    fecha : {}
 }
 
 export const estadoReducer = ( state = initialState , action ) => {
@@ -13,6 +15,12 @@ export const estadoReducer = ( state = initialState , action ) => {
                 ...state , 
                 datos : action.payload
             }
+
+        case types.fechaDHoy : 
+            return {
+                ...state ,
+                fecha : action.payload
+            }
         
     
         default:
@@ -21,14 +29,20 @@ export const estadoReducer = ( state = initialState , action ) => {
 }
 
 export const getDatos = ()=> {
-    return async( dispatch )=> {
-        const {data} = await Axios.get(urlGeneral)
-        console.log(data)
+    return async( dispatch  )=> {
+        const { data:{ records } } = await Axios.get(urlGeneral)
+        
+        console.log(records)
         dispatch(
-            putDatos( data )
+            putDatos( records )
         )
     }
 }
+
+export const diaHoy = ( hoy , ayer )=> ({
+    type : types.fechaDHoy ,
+    payload: { hoy , ayer}
+})
 
 const putDatos = ( dGenerales )=> ({
     type : types.datosGenerales,
