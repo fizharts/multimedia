@@ -26,3 +26,13 @@ export const setValorLocal = ( nombreITem , valorItem ) => {
 }
 
 
+export const convertString = ( ...valores ) => {
+    let nuevosValores = valores.map( valor => {
+        return JSON.stringify(valor)
+    })
+    return [
+        nuevosValores
+    ]
+}
+
+
