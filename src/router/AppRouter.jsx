@@ -5,8 +5,8 @@ import {
     Route,
     Redirect
 } from 'react-router-dom';
+import { Contenedor } from '../components/Contenedor';
 
-import { EstadosComponent } from '../components/EstadosComponent'
 
 export const AppRouter = () => {
     return (
@@ -17,7 +17,7 @@ export const AppRouter = () => {
             <Route 
                 exact 
                 path="/estados" 
-                component={ EstadosComponent }
+                component={ Contenedor }
             />
 
             <Redirect to="/" />   

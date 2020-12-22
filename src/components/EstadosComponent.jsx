@@ -1,56 +1,69 @@
-import moment from 'moment';
-import React, { useEffect , useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { crearDB, crearRegistro, removeRepeats, setValorLocal , convertString } from '../helpers/fun';
-import { diaHoy, getDatos } from '../redux/ducks/EstadosDuck';
+
+import React, { Fragment, useEffect , useState } from 'react'
 import { useIndexedDB } from 'react-indexed-db'
+import { useSelector } from 'react-redux'
+import { yaEstaEnBase } from '../helpers/fun'
+
 
 
 
 export const EstadosComponent = () => {
 
-    const { datos , fecha:{ayer} } = useSelector( state => state.datos )
+    const db = useIndexedDB('covFechas')
+    const [datosBase, setDatosBase] = useState([])
+
+
+    const { datos , fecha:{ hoy , ayer , fechaServidor } } = useSelector(state => state.datos)
+    let losdatos = []
+    let fechServ = ''
+    console.log( hoy , ayer , fechaServidor )
 
     
-    const dispatch = useDispatch();
-    const now = moment()
-    const yesterday = moment().subtract(1 , 'd')
-    const db = useIndexedDB('covFechas')
     
-   
+    if (datos.length === 0) {
+        console.log( 'no llegaron' );
+    }else{
+        losdatos = datos
+        fechServ = fechaServidor
+
+    }
+
 
     useEffect(() => {
-        
-        console.log( db )
-        dispatch( getDatos() )
-        dispatch( diaHoy( now , yesterday ) )
-        const [  fechaHoy ] = removeRepeats( (datos.map( dato => dato.record_timestamp )) )
-        const fechaRest = moment(fechaHoy[0]).format('DD-MM-YYYY')
-        const dechaAyer = moment( ayer ).format('DD-MM-YYYY')
-        const [ convertido ] = convertString( datos )
-            console.log( datos )
-        db.add({
-            'fecha' : '10-12-2020',
-            'datos' : convertido
-        }).then(e => {
-            console.log(e)
-        })
-        
-
-        if ( fechaRest === dechaAyer ) {
-            console.log( dechaAyer )
-            console.log( fechaRest )
+        if ( fechaServidor != '' ||  datos.length > 0) {
+            db.add({
+                'fecha' : fechaServidor,
+                'datos' : datos
+            }).then(e => {
+                console.log(e)
+            })
         }
-    
-     
 
-    }, [dispatch])
- 
-    
-    // https://bluuweb.github.io/react-udemy/10-redux/
+        db.getAll().then(res => {
+            
+        const { arrSinDuplicaciones } =  yaEstaEnBase( res )
+            console.log( arrSinDuplicaciones );
+        })
+
+    }, [fechaServidor])
+
+
+
+
     return (
         <div>
+    
             <h1>Estados</h1>
+            {
+                datos.map(({ recordid }) => {
+                    return (
+                        <Fragment key={ recordid }>
+                        <small >Prueba</small><br/>
+                        </Fragment>
+                    )
+                })
+            }
+
         </div>
     )
 }

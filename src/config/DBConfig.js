@@ -13,7 +13,7 @@ export const DBConfig = {
                     name : 'hoy',
                     keypath: 'hoy',
                     options:{
-                        unique :true
+                        unique :false
                 }
                 },{
                     name: 'datos',

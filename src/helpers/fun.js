@@ -1,3 +1,5 @@
+import Axios from "axios"
+import { urlGeneral } from "./urls"
 
 export const removeRepeats = ( dataArray ) => {
     let setHelper = new Set( dataArray )
@@ -33,6 +35,29 @@ export const convertString = ( ...valores ) => {
     return [
         nuevosValores
     ]
+}
+
+
+export const losDatos = async ( urlGeneral ) => {
+    const { data } = await Axios.get( urlGeneral )
+    return data
+}
+
+
+export const yaEstaEnBase = (arrayBase) => {
+    let baseLimpia = arrayBase.filter(base=> {
+        return base.fecha != undefined && base.datos.length != 0
+    } )
+
+    let set = new Set( baseLimpia.map( JSON.stringify ) )
+    let arrSinDuplicaciones = Array.from( set ).map( JSON.parse );
+
+
+    return {
+        arrSinDuplicaciones
+    }
+        
+    
 }
 
 
