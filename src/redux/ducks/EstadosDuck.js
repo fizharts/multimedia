@@ -6,7 +6,8 @@ import { parametros } from '../../helpers/parametros';
 const initialState = {
     datos : []  ,
     parametros : [] ,
-    fecha : {}
+    fecha : {} ,
+    numeroRegistros : 50
 }
 
 export const estadoReducer = ( state = initialState , action ) => {
@@ -27,6 +28,11 @@ export const estadoReducer = ( state = initialState , action ) => {
             return {
                 ...state ,
                 parametros : action.payload
+            }
+        case types.numeroRegistros :
+            return {
+                ...state ,
+                numeroRegistros : action.payload
             }
         
     
@@ -71,5 +77,10 @@ const diaHoy = ( hoy , ayer , fechaServidor )=> ({
 const putDatos = ( dGenerales )=> ({
     type : types.datosGenerales,
     payload: dGenerales
+})
+
+export const setNumeroRegistros = ( numero ) => ({
+    type : types.numeroRegistros,
+    payload : numero
 })
 

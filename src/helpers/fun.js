@@ -1,3 +1,4 @@
+import { moment } from 'moment';
 import Axios from "axios"
 
 export const removeRepeats = ( dataArray ) => {
@@ -39,6 +40,7 @@ export const convertString = ( ...valores ) => {
 
 export const losDatos = async ( urlGeneral ) => {
     const { data } = await Axios.get( urlGeneral )
+    console.log(data)
     return data
 }
 
@@ -57,6 +59,14 @@ export const yaEstaEnBase = (arrayBase) => {
     }
         
     
+}
+
+
+export const fechaHoy = ( ) => {
+    let hoy = moment().format('DD-MM-YYYY')
+    return {
+        hoy
+    }
 }
 
 

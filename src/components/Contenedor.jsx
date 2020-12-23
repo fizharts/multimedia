@@ -1,17 +1,21 @@
 import { losDatos } from './../helpers/fun';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import React, { useEffect } from 'react'
 import { EstadosComponent } from './EstadosComponent';
-import { urlGeneral } from '../helpers/urls';
 import { getDatos } from '../redux/ducks/EstadosDuck';
+import { urlGeneral } from '../helpers/urls';
 
 export const Contenedor = () => {
     const dispatch = useDispatch()
-
+    const { numeroRegistros } = useSelector(state => state.datos)
+    
 
     useEffect(() => {
         try {
-            losDatos( urlGeneral ).then( res => {
+            console.log(numeroRegistros)
+            const url = urlGeneral( numeroRegistros )
+            console.log( url )
+            losDatos( url ).then( res => {
                 dispatch(
                     getDatos( res )
                 )
@@ -23,12 +27,13 @@ export const Contenedor = () => {
         } 
 
 
-    }, [ dispatch ])
+    }, [dispatch, numeroRegistros])
 
 
     return (
         <div>
             <EstadosComponent />
+            
         </div>
     )
 }
