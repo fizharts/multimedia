@@ -1,12 +1,32 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { setFechaInput } from './../../redux/ducks/HospitalesDuck';
+/* eslint-disable no-unused-vars */
+import { fechaStageH } from './../../redux/ducks/HospitalesDuck';
+import { useSelector, useDispatch } from 'react-redux';
 import React, { Fragment } from 'react'
 import { Hospital } from './Hospital';
 import { ParametrosHospital } from './ParametrosHospital';
+import { convertirFecha } from '../../helpers/fun';
+
 
 export const HospitalesComponent = () => {
 
-
+    
     const {datosH , parametrosH} = useSelector(state => state.hospitales)
+    const dispatch = useDispatch()
+    const handleChange = ( e ) => {
+        // (e.target.value)
+    
+        try {
+            dispatch(
+                setFechaInput(
+                    e.target.value
+                )
+            )
+        } catch (error) {
+            
+        }
+
+    }
 
     console.log( parametrosH )
     return (
@@ -14,6 +34,7 @@ export const HospitalesComponent = () => {
     
             <h1>Hospitales</h1>
                 <div className="row">
+
                 <input 
                     type="number" 
                     name="Numberr" 
@@ -28,14 +49,16 @@ export const HospitalesComponent = () => {
 
                     />
 
+                    <input className="form-control" onChange={(e)=> handleChange(e) }  type="date" />
+
                 </div>
             <div className="table-responsive" style={ {
                 height: '80vh'
             } }>
-            <table className="table table-hover  table-dark ">
+            <table className="table table-hover   table-dark ">
             <thead style={{
             
-                backgroundColor:'#01599d'
+                backgroundColor:'#292b2c'
             }}>
                 <tr>
                     { 

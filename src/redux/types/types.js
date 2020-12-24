@@ -7,7 +7,8 @@ export const types = {
     datosGeneralesHospitales : '[dataHospitales] datos generales' ,
     fechaDHoyHospitales : '[dataHospitales] fecha de hoy',
     parametrosHospitales : '[dataHospitales] parametros',
-    numeroRegistrosHospitales : '[dataHospitales] numero de registros'
+    numeroRegistrosHospitales : '[dataHospitales] numero de registros',
+    fechaINput : '[dataHospitales] fecha de input Hoy'
 
     
 }

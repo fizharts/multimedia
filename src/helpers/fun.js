@@ -1,5 +1,9 @@
+import { diaHoy } from './../redux/ducks/HospitalesDuck';
+import { useDispatch } from 'react-redux';
 import { moment } from 'moment';
 import Axios from "axios"
+
+
 
 export const removeRepeats = ( dataArray ) => {
     let setHelper = new Set( dataArray )
@@ -68,5 +72,53 @@ export const fechaHoy = ( ) => {
         hoy
     }
 }
+export  const alertas = (estatus_capacidad_hospitalaria)=> {
+    
+    switch (estatus_capacidad_hospitalaria) {
+        case 'Crítica':
+            return {
+                backgroundColor : 'red',
+                color: 'white'
+            }
+    
+        case 'Media' : 
+            return {
+            backgroundColor : '#f0ad4e',
+                color: 'black' 
+        }        
+        case 'Buena' : 
+            return {
+            backgroundColor : '#5cb85c',
+                color: 'white' 
+            }   
+            
+        default :
+            return {}
+
+
+    }
+}
+
+
+
+
+    export const convertirFecha = ( fechaInicial ) => {
+        // 2020%2F12%2F20
+    let tipoFecha = fechaInicial.replace(/-/g , '%2F')
+
+
+        return [
+            tipoFecha
+        ]
+    }
+
+export const formatearFechas = ( fecha ) => {
+    let nuevaFecha =  `${fecha.getFullYear()}-${fecha.getMonth()+1}-${fecha.getDate()}`  
+    return [
+        nuevaFecha
+    ]
+}
+
+
 
 

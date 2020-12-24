@@ -1,4 +1,4 @@
-import { moment } from 'moment';
+import { formatearFechas, convertirFecha } from './../../helpers/fun';
 import { parametrosHospitales } from '../../helpers/parametrosHopitales';
 import { types } from './../types/types';
 
@@ -6,6 +6,7 @@ const initialState = {
     datosH : []  ,
     parametrosH : [] ,
     fechaH : {} ,
+    fechaHInput: {},
     numeroRegistrosH : 50
 }
 
@@ -33,6 +34,11 @@ export const hospitalesReducer = ( state = initialState , action ) => {
                 ...state ,
                 numeroRegistrosH : action.payload
             }
+        case types.fechaINput :
+            return {
+                ...state ,
+                fechaHInput : action.payload
+            }
         
     
         default:
@@ -48,13 +54,9 @@ export const getDatosH = ( datosCompletos )=> {
     console.log(records)
     return async( dispatch , getState  )=> {
 
-            
-            // const ayer  = moment().subtract(1 , 'd').format('DD-MM-YYYY')
-            // const [ fechaHoy ] = removeRepeats( (records.map( dato => dato.record_timestamp )) )
-            // console.log( fechaHoy )
-            // const fechaRest = moment(fechaHoy[0]).format('DD-MM-YYYY')
+        
             dispatch( putDatos( records ) ) 
-            // dispatch( diaHoy( hoy , ayer ,fechaRest ) )
+
             dispatch( setParametros(parametrosHospitales) )
 
     
@@ -65,14 +67,57 @@ export const getDatosH = ( datosCompletos )=> {
 }
 
 
+export const fechaStageH = ( ) => {
+    let fecha = new Date() 
+    let [hoy] = formatearFechas( fecha )
+    let [hoyF] = convertirFecha(hoy)
+
+    return async( dispatch , getState  )=> {
+        dispatch(
+            diaHoy({
+                hoy,
+                hoyF
+            })
+        )
+    }
+    
+}
+
+export const setFechaInput =( vInput ) => {
+    console.log(vInput)
+    let [diaInput] = formatearFechas( vInput )
+    let [diaInputF] = convertirFecha(diaInput)
+    console.log(diaInput)
+    console.log(diaInputF)
+
+    return async( dispatch , getState ) => {
+        dispatch(
+            setDiaInput({
+                diaInput,
+                diaInputF
+            })
+        )
+    }
+
+}
+
+
 const setParametros = ( facet ) => ({
     type : types.parametrosHospitales ,
     payload :facet
 })
 
-export const diaHoy = ( hoy )=> ({
+export const diaHoy = ( hoy , hoyF )=> ({
     type : types.fechaDHoyHospitales ,
-    payload: { hoy }
+    payload: {hoy , hoyF} 
+})
+
+export const setDiaInput = ( fechaInput , fechaInputF ) => ({
+    type : types.fechaINput ,
+    payload: {
+        fechaInput,
+        fechaInputF
+    }
 })
 
 const putDatos = ( dGenerales )=> ({
