@@ -41,11 +41,12 @@ export const hospitalesReducer = ( state = initialState , action ) => {
                 nombresHospitales : action.payload.nombres
 
             }
-        case types.fechaINput :
+        case types.fechaInput :
             return {
                 ...state ,
                 fechaHInput : action.payload
             }
+     
         
     
         default:
@@ -98,20 +99,7 @@ export const fechaStageH = ( ) => {
     
 }
 
-export const setFechaInput =( vInput ) => {
-    console.log(vInput)
-    // let [diaInput] = formatearFechas( vInput )
-    // let [diaInputF] = convertirFecha(diaInput)
-    // console.log(diaInput)
 
-
-    return async( dispatch , getState ) => {
-        dispatch(
-            setDiaInput( vInput )
-        )
-    }
-
-}
 
 
 const setParametros = ( facet ) => ({
@@ -124,12 +112,7 @@ export const diaHoy = ( hoy , hoyF )=> ({
     payload: {hoy , hoyF} 
 })
 
-export const setDiaInput = ( fechaInput ) => ({
-    type : types.fechaINput ,
-    payload: {
-        fechaInput
-    }
-})
+
 
 const putDatos = ( dGenerales )=> ({
     type : types.datosGeneralesHospitales,
@@ -139,5 +122,10 @@ const putDatos = ( dGenerales )=> ({
 export const setNumeroRegistros = ( numero ) => ({
     type : types.numeroRegistrosHospitales,
     payload : numero
+})
+
+export const setFechaInput = ( fecha ) => ({
+    type: types.fechaInput ,
+    payload: {fecha}
 })
 

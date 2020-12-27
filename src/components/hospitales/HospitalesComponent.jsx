@@ -10,13 +10,14 @@ import { convertirFecha } from '../../helpers/fun';
 export const HospitalesComponent = () => {
 
     
-    const {datosH , parametrosH} = useSelector(state => state.hospitales)
+    const {datosH , parametrosH , nombresHospitales} = useSelector(state => state.hospitales)
     const dispatch = useDispatch()
     const [fechaInputS, setFechaIntputS] = useState('');
 
     const handleChange = ( e ) => {
         // (e.target.value)
         let fecha = e.target.value
+       
         setFechaIntputS( fecha )
 
     }
@@ -34,6 +35,10 @@ export const HospitalesComponent = () => {
             )
         )
 
+        dispatch(
+            setFechaInput(fechaInputS)
+        )
+
         
 
 
@@ -46,7 +51,23 @@ export const HospitalesComponent = () => {
         <div className="m-5">
     
             <h1>Hospitales</h1>
-                <div className="row">
+                                <div classname="row">
+                    <div className="form-group">
+                        <label htmlFor="exampleSelect">Buscar por hospital</label>
+                        <select className="custom-select" id="exampleSelect">
+                            {
+                                nombresHospitales.map(nombre=>{
+                                    return(
+                                        <Fragment key={nombre}>
+                                            <option value={nombre}>{nombre}</option>
+                                        </Fragment>
+                                    )
+                                })
+                            }
+                        </select>
+                    </div>
+
+    
 
                 <input 
                     type="number" 

@@ -8,8 +8,8 @@ export const types = {
     fechaDHoyHospitales : '[dataHospitales] fecha de hoy',
     parametrosHospitales : '[dataHospitales] parametros',
     numeroRegistrosHospitales : '[dataHospitales] numero de registros',
-    fechaINput : '[dataHospitales] fecha de input Hoy',
-    nombreHospitales : '[dataHospitales] nombre de hospitales'
+    nombreHospitales : '[dataHospitales] nombre de hospitales',
+    fechaInput : '[dataHospitales] fecha del input'
 
     
 }
