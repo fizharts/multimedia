@@ -7,7 +7,7 @@ const initialState = {
     datos : []  ,
     parametros : [] ,
     fecha : {} ,
-    numeroRegistros : 50
+    numeroRegistros : 50 
 }
 
 export const estadoReducer = ( state = initialState , action ) => {

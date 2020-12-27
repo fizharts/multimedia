@@ -1,8 +1,7 @@
-import { setFechaInput } from './../../redux/ducks/HospitalesDuck';
 /* eslint-disable no-unused-vars */
-import { fechaStageH } from './../../redux/ducks/HospitalesDuck';
+import { fechaStageH  , setFechaInput, setNombreHospitales} from './../../redux/ducks/HospitalesDuck';
 import { useSelector, useDispatch } from 'react-redux';
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { Hospital } from './Hospital';
 import { ParametrosHospital } from './ParametrosHospital';
 import { convertirFecha } from '../../helpers/fun';
@@ -13,20 +12,34 @@ export const HospitalesComponent = () => {
     
     const {datosH , parametrosH} = useSelector(state => state.hospitales)
     const dispatch = useDispatch()
+    const [fechaInputS, setFechaIntputS] = useState('');
+
     const handleChange = ( e ) => {
         // (e.target.value)
-    
-        try {
-            dispatch(
-                setFechaInput(
-                    e.target.value
-                )
-            )
-        } catch (error) {
-            
-        }
+        let fecha = e.target.value
+        setFechaIntputS( fecha )
 
     }
+
+    useEffect(()=> {
+        
+        let nombresDeLosHospitales = datosH.map((datoH) => {
+                    return datoH.fields.nombre_hospital
+                })
+
+                
+        dispatch(
+            setNombreHospitales(
+                nombresDeLosHospitales
+            )
+        )
+
+        
+
+
+
+        console.log(fechaInputS)
+    },[fechaInputS , datosH , dispatch])
 
     console.log( parametrosH )
     return (

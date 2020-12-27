@@ -7,7 +7,8 @@ const initialState = {
     parametrosH : [] ,
     fechaH : {} ,
     fechaHInput: {},
-    numeroRegistrosH : 50
+    numeroRegistrosH : 50,
+    nombresHospitales : []
 }
 
 export const hospitalesReducer = ( state = initialState , action ) => {
@@ -33,6 +34,12 @@ export const hospitalesReducer = ( state = initialState , action ) => {
             return {
                 ...state ,
                 numeroRegistrosH : action.payload
+            }
+        case types.nombreHospitales :
+            return {
+                ...state ,
+                nombresHospitales : action.payload.nombres
+
             }
         case types.fechaINput :
             return {
@@ -66,6 +73,14 @@ export const getDatosH = ( datosCompletos )=> {
     }
 }
 
+export const setNombreHospitales = ( nombres ) => (
+    {
+        type: types.nombreHospitales ,
+        payload: {
+            nombres
+        }
+    }
+)
 
 export const fechaStageH = ( ) => {
     let fecha = new Date() 
@@ -85,17 +100,14 @@ export const fechaStageH = ( ) => {
 
 export const setFechaInput =( vInput ) => {
     console.log(vInput)
-    let [diaInput] = formatearFechas( vInput )
-    let [diaInputF] = convertirFecha(diaInput)
-    console.log(diaInput)
-    console.log(diaInputF)
+    // let [diaInput] = formatearFechas( vInput )
+    // let [diaInputF] = convertirFecha(diaInput)
+    // console.log(diaInput)
+
 
     return async( dispatch , getState ) => {
         dispatch(
-            setDiaInput({
-                diaInput,
-                diaInputF
-            })
+            setDiaInput( vInput )
         )
     }
 
@@ -112,11 +124,10 @@ export const diaHoy = ( hoy , hoyF )=> ({
     payload: {hoy , hoyF} 
 })
 
-export const setDiaInput = ( fechaInput , fechaInputF ) => ({
+export const setDiaInput = ( fechaInput ) => ({
     type : types.fechaINput ,
     payload: {
-        fechaInput,
-        fechaInputF
+        fechaInput
     }
 })
 
