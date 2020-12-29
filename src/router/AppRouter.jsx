@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 import { Contenedor } from '../components/Contenedor';
 import { ContenedorHospitales } from '../components/hospitales/ContenedorHospitales';
+import { ContenedorPlanetas } from '../components/interactivo/componentesThree/ContenedorPlanetas';
 
 
 export const AppRouter = () => {
@@ -24,6 +25,12 @@ export const AppRouter = () => {
                 exact
                 path="/hospitales"
                 component={ ContenedorHospitales }
+            />
+
+            <Route 
+                exact
+                path="/planetas"
+                component={ ContenedorPlanetas }
             />
 
             <Redirect to="/" />   

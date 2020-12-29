@@ -1,4 +1,4 @@
-import { fechaStage, fechaStageH } from './../../redux/ducks/HospitalesDuck';
+import { fechaStageH } from './../../redux/ducks/HospitalesDuck';
 import React, { Fragment, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { formatearFechas, losDatos } from '../../helpers/fun'

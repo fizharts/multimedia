@@ -14,7 +14,7 @@ export const EstadosComponent = () => {
 
     const db = useIndexedDB('covFechas')
     const dispatch = useDispatch()
-    const { datos , fecha:{ hoy , ayer , fechaServidor } , parametros , numeroRegistros  } = useSelector(state => state.datos)
+    const { datos , fecha:{ fechaServidor } , parametros , numeroRegistros  } = useSelector(state => state.datos)
 
     
     

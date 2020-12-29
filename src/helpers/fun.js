@@ -1,5 +1,3 @@
-import { diaHoy } from './../redux/ducks/HospitalesDuck';
-import { useDispatch } from 'react-redux';
 import { moment } from 'moment';
 import Axios from "axios"
 
