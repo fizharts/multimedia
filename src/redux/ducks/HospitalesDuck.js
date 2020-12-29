@@ -46,7 +46,7 @@ export const hospitalesReducer = ( state = initialState , action ) => {
                 ...state ,
                 fechaHInput : action.payload
             }
-     
+    
         
     
         default:
@@ -71,6 +71,21 @@ export const getDatosH = ( datosCompletos )=> {
 
     
     
+    }
+}
+
+export const setInputFechaDuck = ( fechaI ) => {
+    
+
+    const [ fechaFormateada ] = convertirFecha(fechaI)
+
+    return async ( dispatch ) => {
+        dispatch( 
+            setFechaInput( {
+                fechaI,
+                fechaFormateada
+            } )
+        )
     }
 }
 
@@ -114,7 +129,7 @@ export const diaHoy = ( hoy , hoyF )=> ({
 
 
 
-const putDatos = ( dGenerales )=> ({
+export const putDatos = ( dGenerales )=> ({
     type : types.datosGeneralesHospitales,
     payload: dGenerales
 })

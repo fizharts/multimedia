@@ -1,7 +1,7 @@
 import { fechaStage, fechaStageH } from './../../redux/ducks/HospitalesDuck';
 import React, { Fragment, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { losDatos } from '../../helpers/fun'
+import { formatearFechas, losDatos } from '../../helpers/fun'
 import { urlHospitales } from '../../helpers/urls'
 import { getDatosH } from '../../redux/ducks/HospitalesDuck'
 import { HospitalesComponent } from './HospitalesComponent';
@@ -10,14 +10,15 @@ export const ContenedorHospitales = () => {
 
 
     const dispatch = useDispatch()
-  
+
 
     const { numeroRegistrosHospitales } = useSelector(state => state.hospitales)
     
     useEffect(() => {
         
         const hoy = new Date()
-
+        const [ hoyF ] = formatearFechas( hoy )
+        console.log(hoyF);
         try {
             dispatch(
                 fechaStageH()

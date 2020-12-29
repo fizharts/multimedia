@@ -2,7 +2,6 @@ import React, { Fragment } from 'react'
 
 export const ParametrosHospital = ({parametrosH}) => {
 
-    console.log(parametrosH)
     const { estatus_capacidad_hospitalaria , fecha , coordenadas , institucion , nombre_hospital , estatus_capacidad_uci  } = parametrosH
 
     return (

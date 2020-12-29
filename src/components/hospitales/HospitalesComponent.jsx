@@ -1,23 +1,23 @@
 /* eslint-disable no-unused-vars */
-import { fechaStageH  , setFechaInput, setNombreHospitales} from './../../redux/ducks/HospitalesDuck';
+import { setInputFechaDuck, setNombreHospitales , putDatos} from './../../redux/ducks/HospitalesDuck';
 import { useSelector, useDispatch } from 'react-redux';
 import React, { Fragment, useEffect, useState } from 'react'
 import { Hospital } from './Hospital';
 import { ParametrosHospital } from './ParametrosHospital';
-import { convertirFecha } from '../../helpers/fun';
+import { convertirFecha, losDatos } from '../../helpers/fun';
+import { urlHospitales } from '../../helpers/urls';
 
 
 export const HospitalesComponent = () => {
 
-    
-    const {datosH , parametrosH , nombresHospitales} = useSelector(state => state.hospitales)
+    // https://github.com/dieguezguille/ThreeAct-Test
+    const {datosH , parametrosH , nombresHospitales , fechaHInput} = useSelector(state => state.hospitales)
     const dispatch = useDispatch()
     const [fechaInputS, setFechaIntputS] = useState('');
 
     const handleChange = ( e ) => {
-        // (e.target.value)
         let fecha = e.target.value
-       
+        
         setFechaIntputS( fecha )
 
     }
@@ -36,22 +36,18 @@ export const HospitalesComponent = () => {
         )
 
         dispatch(
-            setFechaInput(fechaInputS)
+            setInputFechaDuck(fechaInputS)
         )
 
-        
+    },[fechaInputS , datosH , dispatch ])
 
 
 
-        console.log(fechaInputS)
-    },[fechaInputS , datosH , dispatch])
-
-    console.log( parametrosH )
     return (
         <div className="m-5">
     
             <h1>Hospitales</h1>
-                                <div classname="row">
+                                <div className="row">
                     <div className="form-group">
                         <label htmlFor="exampleSelect">Buscar por hospital</label>
                         <select className="custom-select" id="exampleSelect">
