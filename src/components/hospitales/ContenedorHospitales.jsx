@@ -40,8 +40,13 @@ export const ContenedorHospitales = () => {
 
 
     return (
-        <Fragment>
+
+        <div style={{
+            backgroundColor:'white'
+        }}>
+     
             <HospitalesComponent/>
-        </Fragment>
+       
+        </div>
     )
 }

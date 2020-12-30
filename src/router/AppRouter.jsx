@@ -13,7 +13,7 @@ import { ContenedorPlanetas } from '../components/interactivo/componentesThree/C
 export const AppRouter = () => {
     return (
         <Router>
-        <div>
+         <div >
         <Switch>
 
             <Route 
@@ -30,6 +30,11 @@ export const AppRouter = () => {
             <Route 
                 exact
                 path="/planetas"
+                component={ ContenedorPlanetas }
+            />
+            <Route 
+                exact
+                path="/"
                 component={ ContenedorPlanetas }
             />
 

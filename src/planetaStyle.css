@@ -70,16 +70,16 @@ body {
     min-width: 7em;
     margin-bottom: 2px;
 }
-
+/*son aqui*/
 .circle {
     width: 1.5em;
     height: 1.5em;
     border-radius: 250px;
     font-size: 0.4em;
     font-weight: 800;
-    color: #310c5c;
+    color: white;
     text-align: center;
-    background: #ffffff;
+    background: #0000006e;
     cursor: pointer !important;
 }
 
@@ -88,7 +88,9 @@ body {
     padding: 0 !important;
     padding-left: 2px !important;
     color: white;
+    background: #0000006e;
     min-width: 7em;
+    border-radius:10px;
     text-align: left;
 }
 

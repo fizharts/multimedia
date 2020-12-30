@@ -31,7 +31,9 @@ export const Contenedor = () => {
 
 
     return (
-        <div>
+        <div style={{
+            backgroundColor:'white'
+        }}>
             <EstadosComponent />
             
         </div>

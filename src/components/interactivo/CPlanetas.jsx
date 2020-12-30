@@ -11,8 +11,9 @@ import Room from './componentesThree/Room/Room';
 import { Navigation } from './componentesThree/Navigation/Navigation';
 import { useSpring, animated, config } from "react-spring";
 import { NavLink } from './componentesThree/NavLink/NavLink';
-import '../../planetaStyle.css'
+
 import { useSelector } from 'react-redux';
+import { NavsHospitales } from './componentesThree/NavsHospitales/NavsHospitales';
 
 
 
@@ -25,6 +26,9 @@ extend({ OrbitControls })
 
 
 export const CPlanetas = () => {
+
+    
+
     const [markers] = useState([
     {
         position: [0, 0, 0],
@@ -48,7 +52,10 @@ export const CPlanetas = () => {
     },
     ]);
 
-    const {titulo} = useSelector(state => state.planetas)
+    // markers.map((maker) => {
+    //   return maker.name = 'Uno'
+    // })
+
 
     const AnimatedNavigation = animated(Navigation);
 
@@ -90,35 +97,16 @@ export const CPlanetas = () => {
     return (
         <div className="content">
           <div className="ui">
-            <h2 className="title"
-              onClick={() => onNavigationItemClicked(0)}>
-                {
-                  titulo
-                }
-            </h2>
-            <Nav defaultActiveKey="/home" className="flex-column">
-              <NavLink
-                id={1}
-                name={markers[1].name}
-                onNavLinkClicked={onNavigationItemClicked}>
-              </NavLink>
-              <NavLink
-                id={2}
-                name={markers[2].name}
-                onNavLinkClicked={onNavigationItemClicked}>
-              </NavLink>
-              <NavLink
-                id={3}
-                name={markers[3].name}
-                onNavLinkClicked={onNavigationItemClicked}>
-              </NavLink>
-            </Nav>
+          
+            <NavsHospitales onNavigationItemClicked={onNavigationItemClicked} markers={markers}/>
+          
           </div>
           <Canvas>
+      
             <ambientLight />
             <pointLight
-              position={[0, 5, 0]}
-              intensity={1} />
+              position={[10, 10, 10]}
+              intensity={2} />
             <AnimatedNavigation
               cameraPosition={cameraSpring.pos}
               cameraTarget={cameraSpring.target} />
