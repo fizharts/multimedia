@@ -17,13 +17,13 @@ export default function Room(props) {
   return (
     <group ref={group} {...props} dispose={null}>
       <group rotation={[-Math.PI / 2, 0, 0]}>
-        <group rotation={[Math.PI / 2, 0, 0]}>
-        <mesh visible userData={{ test: "hello" }} position={[0, 0, 0]} rotation={[0, 0, 0]}>
-                    <sphereGeometry attach="geometry" args={[4,4, 4]} />
+        <group >
+        <mesh visible userData={{ test: "hello" }} position={[0, 0, 0]} rotation={[Math.PI / 2, 0, 0]}>
+                    <sphereGeometry attach="geometry" args={[7,7, 7]} />
                     <meshStandardMaterial attach="material" wireframe />
         </mesh>
-        <mesh visible userData={{ test: "hello" }} position={[10, 10, 10]} rotation={[0, 0, 0]}>
-                    <sphereGeometry attach="geometry" args={[4,4, 4]} />
+        <mesh visible userData={{ test: "hello" }} position={[10, 10, 10]} rotation={[10, 0, 0]}>
+                    <sphereGeometry attach="geometry" args={[1,1, 1]} />
                     <meshStandardMaterial attach="material"  />
         </mesh>
           

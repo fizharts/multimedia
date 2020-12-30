@@ -10,7 +10,7 @@ export const NavLink = (props)  => {
 
   const linkSpring = useSpring({
     transform: hovered ? 'scale(1.1)' : 'scale(1)',
-    padding: 10,
+    padding: 2,
     margin: '0.5rem 1rem',
     borderRadius: '5px',
     backgroundColor: hovered ? 'rgba(0, 0, 0, 0.4)' : 'rgba(0, 0, 0, 0)'

@@ -9,7 +9,12 @@ export const types = {
     parametrosHospitales : '[dataHospitales] parametros',
     numeroRegistrosHospitales : '[dataHospitales] numero de registros',
     nombreHospitales : '[dataHospitales] nombre de hospitales',
-    fechaInput : '[dataHospitales] fecha del input'
+    fechaInput : '[dataHospitales] fecha del input' ,
+
+    tituloPlanetas : '[dataPlanetas] titulo',
+    datosPlanetas : '[dataPlanetas] datos',
+    nombreHospitalesPlanetas : '[dataPlanetas] nombreHospitales',
+    parametrosPlanetas : '[dataPlanetas] parametros'
 
     
 }

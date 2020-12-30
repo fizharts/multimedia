@@ -11,7 +11,8 @@ import Room from './componentesThree/Room/Room';
 import { Navigation } from './componentesThree/Navigation/Navigation';
 import { useSpring, animated, config } from "react-spring";
 import { NavLink } from './componentesThree/NavLink/NavLink';
-import '../../style.css'
+import '../../planetaStyle.css'
+import { useSelector } from 'react-redux';
 
 
 
@@ -47,6 +48,7 @@ export const CPlanetas = () => {
     },
     ]);
 
+    const {titulo} = useSelector(state => state.planetas)
 
     const AnimatedNavigation = animated(Navigation);
 
@@ -90,7 +92,9 @@ export const CPlanetas = () => {
           <div className="ui">
             <h2 className="title"
               onClick={() => onNavigationItemClicked(0)}>
-                Nombre del Proyecto
+                {
+                  titulo
+                }
             </h2>
             <Nav defaultActiveKey="/home" className="flex-column">
               <NavLink
