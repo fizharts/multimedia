@@ -1,6 +1,6 @@
 import { Stars } from 'drei';
-import React from 'react'
-import { Suspense, useState } from 'react';
+import React, { useMemo } from 'react'
+import { Suspense, useState, useEffect } from 'react';
 import { Nav } from 'react-bootstrap';
 
 import { Canvas, extend } from 'react-three-fiber';
@@ -14,6 +14,8 @@ import { NavLink } from './componentesThree/NavLink/NavLink';
 
 import { useSelector } from 'react-redux';
 import { NavsHospitales } from './componentesThree/NavsHospitales/NavsHospitales';
+import { Random } from 'random-js';
+import { CMarker } from './componentesThree/Marker/CMarker';
 
 
 
@@ -26,10 +28,18 @@ extend({ OrbitControls })
 
 
 export const CPlanetas = () => {
-
-    
-
-    const [markers] = useState([
+  
+  const { datos } = useSelector(state => state.planetas)
+  let markers2 = [
+    {
+            position: [0, 0, 0],
+            cameraPos: [18, 18, 18],
+            name: "camaraCentral" ,
+            loc : []
+        }
+  ]
+  const random = new Random()
+  const [markers] = useState([
     {
         position: [0, 0, 0],
         cameraPos: [18, 18, 18],
@@ -51,6 +61,30 @@ export const CPlanetas = () => {
         name: "Estado 3",
     },
     ]);
+
+  let id = 1
+  datos.forEach(dato => {
+    let uno = random.integer(-10,20)
+    let dos = random.integer(-10,20)
+    let tres = random.integer(-10,20)
+    
+    markers2 = [
+      ...markers2 ,
+          {
+        position:[uno , dos , tres],
+        cameraPos : [uno+10 , dos + 10 , tres + 10],
+        name: dato.fields.nombre_hospital ,
+        id : id
+      }
+    ]
+    id ++
+  })
+
+  console.log( markers2  )
+
+  if( markers !== undefined ){
+    console.log(markers[1].position)
+  }
 
     // markers.map((maker) => {
     //   return maker.name = 'Uno'
@@ -99,9 +133,11 @@ export const CPlanetas = () => {
           <div className="ui">
           
             <NavsHospitales onNavigationItemClicked={onNavigationItemClicked} markers={markers}/>
-          
+        
           </div>
-          <Canvas>
+          {
+            markers.length === 0 ? null :
+            <Canvas>
       
             <ambientLight />
             <pointLight
@@ -110,30 +146,17 @@ export const CPlanetas = () => {
             <AnimatedNavigation
               cameraPosition={cameraSpring.pos}
               cameraTarget={cameraSpring.target} />
-          
+        
               <Room
                 position={[0, 0, 0]} />
-              {isAnimating ? null :
-                <group>
-                  <Marker
-                    position={markers[1].position}
-                    name={markers[1].name}
-                    id={1}
-                    selected={selectedItemIndex}
-                    onMarkerClicked={onNavigationItemClicked} />
-                  <Marker
-                    position={markers[2].position}
-                    name={markers[2].name}
-                    id={2}
-                    selected={selectedItemIndex}
-                    onMarkerClicked={onNavigationItemClicked} />
-                  <Marker
-                    position={markers[3].position}
-                    name={markers[3].name}
-                    id={3}
-                    selected={selectedItemIndex}
-                    onMarkerClicked={onNavigationItemClicked} />
-                </group>}
+              {isAnimating && markers !== undefined ? null :
+                <CMarker markers={markers}
+                        selectedItemIndex={selectedItemIndex}
+                        onNavigationItemClicked={onNavigationItemClicked}
+                />
+              
+                
+                }
                 <Suspense/>
             <Controls
               enabled={!isAnimating}
@@ -148,5 +171,6 @@ export const CPlanetas = () => {
               fade={true} />
           </Canvas>
       
+          }
         </div>)
 }
