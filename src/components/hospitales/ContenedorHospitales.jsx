@@ -1,5 +1,6 @@
 import { fechaStageH } from './../../redux/ducks/HospitalesDuck';
-import React, { Fragment, useEffect } from 'react'
+import React, { useEffect } from 'react'
+
 import { useDispatch, useSelector } from 'react-redux'
 import { formatearFechas, losDatos } from '../../helpers/fun'
 import { urlHospitales } from '../../helpers/urls'
@@ -23,7 +24,7 @@ export const ContenedorHospitales = () => {
             dispatch(
                 fechaStageH()
             )
-            const url = urlHospitales( numeroRegistrosHospitales , '2020%2F12%2F09')
+            const url = urlHospitales( numeroRegistrosHospitales , '2020%2F1%2F1')
             console.log(url )
             losDatos( url ).then(result => {
                     
@@ -44,9 +45,9 @@ export const ContenedorHospitales = () => {
         <div style={{
             backgroundColor:'white'
         }}>
-     
+    
             <HospitalesComponent/>
-       
+    
         </div>
     )
 }

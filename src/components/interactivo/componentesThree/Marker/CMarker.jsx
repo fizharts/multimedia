@@ -1,26 +1,44 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 import { Marker } from './Marker'
 
-export const CMarker = ({markers, selectedItemIndex , onNavigationItemClicked}) => {
-    console.log(
-        markers
-    )
+export const CMarker = ({markers, selectedItemIndex , onNavigationItemClicked , markers2}) => {
+    
+    const [markerNow, setmarkerNow] = useState([])
+
+    useEffect(()=>{
+        if( markers2.length > 1 ) {
+            setmarkerNow(
+                markers2
+            )
+
+        }
+
+
+    } , [markers2 ])
+
+
+    
+
     return (
         <group>
-            {/* {
-                markers.map((marker , i) => {
-                    console.log(marker)
-                    return(
-                    <Marker
-                    key={marker.id}
-                    position={marker[i].position}
-                    name={marker[i].name}
-                    id={marker.id}
-                    selected={selectedItemIndex}
-                    onMarkerClicked={onNavigationItemClicked} />
+            {
+                markers2.length > 1 ? (
+                    markers2.map(maker => (
+                        <Marker
+                            key={ maker.id }
+                            position={maker.position}
+                            name={maker.name}
+                            id={2}
+                            selected={selectedItemIndex}
+                            onMarkerClicked={onNavigationItemClicked} 
+
+                    />
+                        
+                        )
                     )
-                })
-            } */}
+                ): null
+            }
                 <Marker
                     position={markers[1].position}
                     name={markers[1].name}

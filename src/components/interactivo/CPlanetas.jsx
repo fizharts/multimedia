@@ -1,5 +1,5 @@
 import { Stars } from 'drei';
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Suspense, useState } from 'react';
 
 import { Canvas, extend } from 'react-three-fiber';
@@ -9,10 +9,12 @@ import Room from './componentesThree/Room/Room';
 import { Navigation } from './componentesThree/Navigation/Navigation';
 import { useSpring, animated, config } from "react-spring";
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavsHospitales } from './componentesThree/NavsHospitales/NavsHospitales';
 import { Random } from 'random-js';
 import { CMarker } from './componentesThree/Marker/CMarker';
+import { crearMaker } from '../../helpers/fun';
+import { setMakers } from '../../redux/ducks/PlanetasDuck';
 
 
 
@@ -27,6 +29,8 @@ extend({ OrbitControls })
 export const CPlanetas = () => {
   
   const { datos } = useSelector(state => state.planetas)
+  
+  const dispatch = useDispatch()
   let markers2 = [
     {
             position: [0, 0, 0],
@@ -40,7 +44,7 @@ export const CPlanetas = () => {
     {
         position: [0, 0, 0],
         cameraPos: [18, 18, 18],
-        name: "Titulo"
+        name: "Titulo" 
     },
     {
         position: [-12, 10, 2],
@@ -61,9 +65,9 @@ export const CPlanetas = () => {
 
   let id = 1
   datos.forEach(dato => {
-    let uno = random.integer(-10,20)
-    let dos = random.integer(-10,20)
-    let tres = random.integer(-10,20)
+    let uno = random.integer(-100,100)
+    let dos = random.integer(-100,100)
+    let tres = random.integer(-100,100)
     
     markers2 = [
       ...markers2 ,
@@ -71,17 +75,33 @@ export const CPlanetas = () => {
         position:[uno , dos , tres],
         cameraPos : [uno+10 , dos + 10 , tres + 10],
         name: dato.fields.nombre_hospital ,
-        id : id
+        id : id ,
+        loc : dato.fields.coordenadas
       }
     ]
     id ++
   })
 
-  console.log( markers2  )
 
-  if( markers !== undefined ){
-    console.log(markers[1].position)
-  }
+  useEffect(() => {
+    const [ d ] = crearMaker( datos )
+    console.log( datos )
+    dispatch( 
+      setMakers( 
+        d
+      )
+    )
+  }, [datos])
+    
+  
+
+
+
+  // console.log( markers2  )
+
+  // if( markers !== undefined ){
+  //   console.log(markers[1].position)
+  // }
 
     // markers.map((maker) => {
     //   return maker.name = 'Uno'
@@ -148,6 +168,7 @@ export const CPlanetas = () => {
                 position={[0, 0, 0]} />
               {isAnimating && markers !== undefined ? null :
                 <CMarker markers={markers}
+                        markers2={ markers2 }
                         selectedItemIndex={selectedItemIndex}
                         onNavigationItemClicked={onNavigationItemClicked}
                 />

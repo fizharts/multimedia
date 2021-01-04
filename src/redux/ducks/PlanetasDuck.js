@@ -5,7 +5,8 @@ const initialState = {
     "datos" : [],
     "nombreHospitales" : [] ,
     "parametros" : [],
-    "fecha" : {}
+    "fecha" : {} ,
+    "markersRedux" : []
 }
 
 export const PlanetasDuck = ( state = initialState , action) => {
@@ -37,6 +38,11 @@ export const PlanetasDuck = ( state = initialState , action) => {
                 ...state ,
                 fecha : action.payload
             }
+        case types.makers :
+            return {
+                ...state ,
+                markersRedux : action.payload
+            }
         
 
         default: 
@@ -54,7 +60,7 @@ export const getHospitalesP = ( datos )=> {
         let titulo = (records[0].datasetid).replace(/-/g , ' ')
         console.log( titulo )
     
-    return async( dispatch )=> {
+        return async( dispatch )=> {
         
         
         dispatch(
@@ -77,6 +83,11 @@ export const getHospitalesP = ( datos )=> {
 export const setFechaPlanetas = ( fecha ) => ({
     type: types.fechaPlanetas ,
     payload : fecha
+})
+
+export const setMakers = ( makers ) => ({
+    type : types.makers ,
+    payload : makers
 })
 
 const setHospitalesp = ( hospitales ) =>({

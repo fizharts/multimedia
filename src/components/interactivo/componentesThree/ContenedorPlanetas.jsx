@@ -1,6 +1,7 @@
+/* eslint-disable no-unused-vars */
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { formatearFechas, losDatos , convertirFecha } from '../../../helpers/fun'
+import { useDispatch } from 'react-redux'
+import { losDatos } from '../../../helpers/fun'
 import { urlHospitales } from '../../../helpers/urls'
 import { getHospitalesP, setFechaPlanetas } from '../../../redux/ducks/PlanetasDuck'
 import { CPlanetas } from '../CPlanetas'
@@ -9,7 +10,7 @@ import '../../../planetaStyle.css'
 export const ContenedorPlanetas = () => {
 
     const hoy = new Date()
-    console.log(hoy)
+    // console.log(hoy)
     
     const dispatch = useDispatch()
     // const [ fechaHoy ] = formatearFechas( new Date() )

@@ -15,7 +15,8 @@ export const types = {
     datosPlanetas : '[dataPlanetas] datos',
     nombreHospitalesPlanetas : '[dataPlanetas] nombreHospitales',
     parametrosPlanetas : '[dataPlanetas] parametros',
-    fechaPlanetas : '[dataPlanetas] fechas'
+    fechaPlanetas : '[dataPlanetas] fechas' ,
+    makers : '[dataPlanetas] makers'
 
     
 }

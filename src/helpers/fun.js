@@ -1,7 +1,8 @@
+import { Random } from 'random-js';
 import { moment } from 'moment';
 import Axios from "axios"
 
-
+const random = new Random()
 
 export const removeRepeats = ( dataArray ) => {
     let setHelper = new Set( dataArray )
@@ -122,6 +123,33 @@ export const formatearFechas = ( fecha ) => {
     return [
         nuevaFecha
     ]
+}
+
+
+export const crearMaker = ( datos ) => {
+    let markers2 = []
+    let id = 1
+    datos.forEach(dato => {
+        let uno = random.integer(-100,100)
+        let dos = random.integer(-100,100)
+        let tres = random.integer(-100,100)
+        
+        markers2 = [
+            ...markers2 ,
+                {
+            position:[uno , dos , tres],
+            cameraPos : [uno+10 , dos + 10 , tres + 10],
+            name: dato.fields.nombre_hospital ,
+            id : id ,
+            loc : dato.fields.coordenadas
+            }
+        ]
+        id ++
+        })
+
+        return [
+            markers2
+        ]
 }
 
 
