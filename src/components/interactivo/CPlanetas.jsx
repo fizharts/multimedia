@@ -1,16 +1,13 @@
 import { Stars } from 'drei';
-import React, { useMemo } from 'react'
-import { Suspense, useState, useEffect } from 'react';
-import { Nav } from 'react-bootstrap';
+import React from 'react'
+import { Suspense, useState } from 'react';
 
 import { Canvas, extend } from 'react-three-fiber';
 import { Controls } from './componentesThree/Controls/Controls';
-import { Marker } from './componentesThree/Marker/Marker';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import Room from './componentesThree/Room/Room';
 import { Navigation } from './componentesThree/Navigation/Navigation';
 import { useSpring, animated, config } from "react-spring";
-import { NavLink } from './componentesThree/NavLink/NavLink';
 
 import { useSelector } from 'react-redux';
 import { NavsHospitales } from './componentesThree/NavsHospitales/NavsHospitales';

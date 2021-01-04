@@ -55,6 +55,10 @@ body {
     cursor: pointer !important;
 }
 
+.title::first-letter {
+    text-transform: uppercase;
+}
+
 .loading {
     padding: 10px;
     font-weight: 400;
@@ -70,7 +74,10 @@ body {
     min-width: 7em;
     margin-bottom: 2px;
 }
+
+
 /*son aqui*/
+
 .circle {
     width: 1.5em;
     height: 1.5em;
@@ -90,7 +97,7 @@ body {
     color: white;
     background: #0000006e;
     min-width: 7em;
-    border-radius:10px;
+    border-radius: 10px;
     text-align: left;
 }
 

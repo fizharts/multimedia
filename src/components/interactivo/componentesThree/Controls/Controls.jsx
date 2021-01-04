@@ -22,13 +22,13 @@ export const Controls = ({
         target={target}
         args={[camera, gl.domElement]}
         enableDamping
-        enableZoom={false}
+        enableZoom={true}
         enableKeys={false}
         enablePan={false}
         dampingFactor={0.1}
-        rotateSpeed={0.2}
+        rotateSpeed={0.3}
         autoRotate={autoRotate}
-        autoRotateSpeed={0.2}/> :
+        autoRotateSpeed={0.4}/> :
         null
 }
 

@@ -111,7 +111,14 @@ export  const alertas = (estatus_capacidad_hospitalaria)=> {
     }
 
 export const formatearFechas = ( fecha ) => {
-    let nuevaFecha =  `${fecha.getFullYear()}-${fecha.getMonth()+1}-${fecha.getDate()}`  
+    let mes 
+    if( (fecha.getMonth()+1).length === 1  ){
+        mes = `0${fecha.getMonth()+1}`
+    }else {
+        mes = fecha.getMonth()+1
+    }
+
+    let nuevaFecha =  `${fecha.getFullYear()}-${ mes }-${fecha.getDate()}`  
     return [
         nuevaFecha
     ]

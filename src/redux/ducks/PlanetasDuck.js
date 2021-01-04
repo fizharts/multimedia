@@ -4,7 +4,8 @@ const initialState = {
     "titulo" : '' ,
     "datos" : [],
     "nombreHospitales" : [] ,
-    "parametros" : []
+    "parametros" : [],
+    "fecha" : {}
 }
 
 export const PlanetasDuck = ( state = initialState , action) => {
@@ -30,6 +31,11 @@ export const PlanetasDuck = ( state = initialState , action) => {
             return {
                 ...state ,
                 parametros : action.payload
+            }
+        case types.fechaPlanetas :
+            return {
+                ...state ,
+                fecha : action.payload
             }
         
 
@@ -67,6 +73,11 @@ export const getHospitalesP = ( datos )=> {
         )
     }
 }
+
+export const setFechaPlanetas = ( fecha ) => ({
+    type: types.fechaPlanetas ,
+    payload : fecha
+})
 
 const setHospitalesp = ( hospitales ) =>({
     type: types.datosPlanetas ,

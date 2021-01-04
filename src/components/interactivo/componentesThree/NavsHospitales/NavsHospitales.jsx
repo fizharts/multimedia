@@ -8,12 +8,16 @@ export const NavsHospitales = ({ markers, onNavigationItemClicked }) => {
 
     return (
         <Fragment>
-            <h2 className="title"
+            <h2 className="title" 
                 onClick={() => onNavigationItemClicked(0)}>
                 {
                     titulo
                 }
             </h2>
+            <div className="form-group">
+                <input type="date" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+            </div>
+
             <Nav defaultActiveKey="/home" className="flex-column">
 
                 <NavLink
