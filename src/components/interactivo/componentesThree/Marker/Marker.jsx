@@ -23,7 +23,7 @@ export const  Marker = (props) =>  {
   })
 
   function onClick() {
-    props.onMarkerClicked(props.id);
+    props.onMarkerClicked(props.id , props.position , props.cameraPos);
   }
 
   return (
@@ -39,6 +39,9 @@ export const  Marker = (props) =>  {
           <p>
             Datos del hospital
           </p>
+          {
+            props.position
+          }
         </animated.div>
       </Html>
     </mesh>

@@ -28,8 +28,8 @@ extend({ OrbitControls })
 
 export const CPlanetas = () => {
   
-  const { datos } = useSelector(state => state.planetas)
-  
+  const { datos , markerRedux } = useSelector(state => state.planetas)
+  const [bandera, setBandera] = useState(0)
   const dispatch = useDispatch()
   let markers2 = [
     {
@@ -84,28 +84,25 @@ export const CPlanetas = () => {
 
 
   useEffect(() => {
-    const [ d ] = crearMaker( datos )
-    console.log( datos )
-    dispatch( 
-      setMakers( 
-        d
+    if( bandera === 1 ){
+      const [ d ] = crearMaker( datos )
+      console.log( datos )
+      dispatch( 
+        setMakers( 
+          d
+        )
       )
-    )
+
+      
+    }
+
+    setBandera(bandera +1 )
+    
+  
   }, [datos])
     
   
 
-
-
-  // console.log( markers2  )
-
-  // if( markers !== undefined ){
-  //   console.log(markers[1].position)
-  // }
-
-    // markers.map((maker) => {
-    //   return maker.name = 'Uno'
-    // })
 
 
     const AnimatedNavigation = animated(Navigation);
@@ -131,7 +128,10 @@ export const CPlanetas = () => {
         onRest: () => setIsAnimating(false)
     })
 
-    const  onNavigationItemClicked = (id) => {
+    const  onNavigationItemClicked = (id ,  position , cameraPos) => {
+    
+      alert(position)
+      alert(cameraPos)
     if (selectedItemIndex !== id && !isAnimating) {
             selectedItemIndex = id;
             setIsAnimating(true);

@@ -127,7 +127,13 @@ export const formatearFechas = ( fecha ) => {
 
 
 export const crearMaker = ( datos ) => {
-    let markers2 = []
+    let markers2 = [{
+        position: [0, 0, 0],
+        cameraPos: [18, 18, 18],
+        id : 0 ,
+        name: "camaraCentral" ,
+        loc : []
+    }]
     let id = 1
     datos.forEach(dato => {
         let uno = random.integer(-100,100)

@@ -29,7 +29,8 @@ export const CMarker = ({markers, selectedItemIndex , onNavigationItemClicked , 
                             key={ maker.id }
                             position={maker.position}
                             name={maker.name}
-                            id={2}
+                            cameraPos={maker.cameraPos}
+                            id={maker.id}
                             selected={selectedItemIndex}
                             onMarkerClicked={onNavigationItemClicked} 
 

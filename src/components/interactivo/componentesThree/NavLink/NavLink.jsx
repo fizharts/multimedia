@@ -21,7 +21,7 @@ export const NavLink = (props)  => {
     <AnimatedNavLink onPointerOver={e => setHovered(true)} 
                       onPointerOut={e => setHovered(false)} 
                       style={{...linkSpring}} 
-                      onClick={() => props.onNavLinkClicked(props.id)}>
+                      onClick={() => props.onNavLinkClicked(props.id , props.position , props.cameraPos)}>
       {props.name}
     </AnimatedNavLink>
   );

@@ -14,7 +14,7 @@ export  const Menu = ({
       <Nav defaultActiveKey="/home" className="flex-column">
         {items.map((marker) => {
           let key = items.indexOf(marker);
-          let id = key + 1;
+          let id =  1;
           return (
             <Nav.Link
               onClick={() => onMarkerClicked(id)}
