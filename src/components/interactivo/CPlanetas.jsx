@@ -5,7 +5,6 @@ import { Suspense, useState } from 'react';
 import { Canvas, extend } from 'react-three-fiber';
 import { Controls } from './componentesThree/Controls/Controls';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
-import Room from './componentesThree/Room/Room';
 import { Navigation } from './componentesThree/Navigation/Navigation';
 import { useSpring, animated, config } from "react-spring";
 
@@ -15,6 +14,7 @@ import { Random } from 'random-js';
 import { CMarker } from './componentesThree/Marker/CMarker';
 import { crearMaker } from '../../helpers/fun';
 import { setMakers } from '../../redux/ducks/PlanetasDuck';
+import { CRoom } from './componentesThree/Room/CRoom';
 
 
 
@@ -36,7 +36,8 @@ export const CPlanetas = () => {
             position: [0, 0, 0],
             cameraPos: [18, 18, 18],
             name: "camaraCentral" ,
-            loc : []
+            loc : [] ,
+            estatus_capacidad_hospitalaria : ""
         }
   ]
   const random = new Random()
@@ -68,15 +69,17 @@ export const CPlanetas = () => {
     let uno = random.integer(-100,100)
     let dos = random.integer(-100,100)
     let tres = random.integer(-100,100)
+
     
     markers2 = [
       ...markers2 ,
           {
         position:[uno , dos , tres],
-        cameraPos : [uno+10 , dos + 10 , tres + 10],
+        cameraPos : [uno , dos , tres + 10],
         name: dato.fields.nombre_hospital ,
         id : id ,
-        loc : dato.fields.coordenadas
+        loc : dato.fields.coordenadas ,
+        estatus_capacidad_hospitalaria :dato.fields.estatus_capacidad_hospitalaria
       }
     ]
     id ++
@@ -89,17 +92,17 @@ export const CPlanetas = () => {
       console.log( datos )
       dispatch( 
         setMakers( 
-          d
+          markers2
         )
       )
-
+          
       
     }
 
     setBandera(bandera +1 )
     
   
-  }, [datos])
+  }, [datos ])
     
   
 
@@ -138,8 +141,8 @@ export const CPlanetas = () => {
             setCameraValues({
             cachedPos: cameraValues.pos,
             cachedTarget: cameraValues.cachedTarget,
-            pos: markers[selectedItemIndex].cameraPos,
-            target: markers[selectedItemIndex].position,
+            pos: cameraPos,
+            target: position,
             autoRotate: id === 0,
         });
         }
@@ -158,17 +161,20 @@ export const CPlanetas = () => {
       
             <ambientLight />
             <pointLight
-              position={[10, 10, 10]}
+              position={[100, 100, 100]}
               intensity={2} />
             <AnimatedNavigation
               cameraPosition={cameraSpring.pos}
               cameraTarget={cameraSpring.target} />
-        
-              <Room
-                position={[0, 0, 0]} />
+              <CRoom 
+                    position={[0, 0, 0]}
+                    markers2={ markers2 }
+                    />
+              
               {isAnimating && markers !== undefined ? null :
                 <CMarker markers={markers}
                         markers2={ markers2 }
+                        
                         selectedItemIndex={selectedItemIndex}
                         onNavigationItemClicked={onNavigationItemClicked}
                 />

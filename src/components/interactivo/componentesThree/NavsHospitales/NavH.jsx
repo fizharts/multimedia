@@ -2,11 +2,9 @@ import { useSelector } from 'react-redux';
 import React, { Fragment } from 'react'
 import { NavLink } from '../NavLink/NavLink';
 
-export const NavH = ( {markers , onNavigationItemClicked} ) => {
+export const NavH = ( { markers , onNavigationItemClicked} ) => {
 
     const { markersRedux } = useSelector(state => state.planetas)
-        
-
     return (
     <Fragment>
         {

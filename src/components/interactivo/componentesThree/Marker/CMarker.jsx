@@ -26,7 +26,7 @@ export const CMarker = ({markers, selectedItemIndex , onNavigationItemClicked , 
                 markers2.length > 1 ? (
                     markers2.map(maker => (
                         <Marker
-                            key={ maker.id }
+                            key={ maker.id+1 }
                             position={maker.position}
                             name={maker.name}
                             cameraPos={maker.cameraPos}

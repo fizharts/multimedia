@@ -23,7 +23,9 @@ export const  Marker = (props) =>  {
   })
 
   function onClick() {
+    console.log(props)
     props.onMarkerClicked(props.id , props.position , props.cameraPos);
+    
   }
 
   return (

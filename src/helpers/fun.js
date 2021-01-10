@@ -144,7 +144,7 @@ export const crearMaker = ( datos ) => {
             ...markers2 ,
                 {
             position:[uno , dos , tres],
-            cameraPos : [uno+10 , dos + 10 , tres + 10],
+            cameraPos : [uno , dos  , tres + 10],
             name: dato.fields.nombre_hospital ,
             id : id ,
             loc : dato.fields.coordenadas
