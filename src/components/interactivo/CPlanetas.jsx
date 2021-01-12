@@ -15,7 +15,8 @@ import { CMarker } from './componentesThree/Marker/CMarker';
 import { crearMaker } from '../../helpers/fun';
 import { setMakers } from '../../redux/ducks/PlanetasDuck';
 import { CRoom } from './componentesThree/Room/CRoom';
-
+import SoundPlanetas from '../../sounds/clickEs.mp3'
+import { Howl, Howler } from 'howler';
 
 
 let selectedItemIndex
@@ -31,6 +32,9 @@ export const CPlanetas = () => {
   const { datos , markerRedux } = useSelector(state => state.planetas)
   const [bandera, setBandera] = useState(0)
   const dispatch = useDispatch()
+  const sp = new Howl( {
+    src : SoundPlanetas
+  } )
   let markers2 = [
     {
             position: [0, 0, 0],
@@ -88,9 +92,7 @@ export const CPlanetas = () => {
 
   useEffect(() => {
     if( bandera === 1 ){
-      const [ d ] = crearMaker( datos )
-      console.log( datos )
-      dispatch( 
+          dispatch( 
         setMakers( 
           markers2
         )
@@ -132,9 +134,11 @@ export const CPlanetas = () => {
     })
 
     const  onNavigationItemClicked = (id ,  position , cameraPos) => {
-    
+      
       alert(position)
       alert(cameraPos)
+      sp.play()
+
     if (selectedItemIndex !== id && !isAnimating) {
             selectedItemIndex = id;
             setIsAnimating(true);
@@ -143,7 +147,7 @@ export const CPlanetas = () => {
             cachedTarget: cameraValues.cachedTarget,
             pos: cameraPos,
             target: position,
-            autoRotate: id === 0,
+            autoRotate: id === 0 || id === 1,
         });
         }
     }

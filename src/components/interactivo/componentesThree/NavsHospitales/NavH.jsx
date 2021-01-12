@@ -10,8 +10,9 @@ export const NavH = ( { markers , onNavigationItemClicked} ) => {
         {
         markersRedux ? (
             markersRedux.map(marker =>(
-                <NavLink key = { marker.id } 
-                        id = { marker.id }
+                <NavLink 
+                key = { marker.id } 
+                        id = { marker.id+1 }
                         name = { marker.name }
                         cameraPos={marker.cameraPos}
                         position={ marker.position }
