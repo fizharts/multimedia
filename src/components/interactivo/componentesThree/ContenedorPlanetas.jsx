@@ -16,7 +16,7 @@ export const ContenedorPlanetas = () => {
     // const [ fechaHoy ] = formatearFechas( new Date() )
     // const [fechaHoyF] = convertirFecha( fechaHoy )
     // console.log( fechaHoy )
-    const fechaHoy = '2021%2F01%2F08'
+    const fechaHoy = '2021%2F01%2F11'
     dispatch(
         setFechaPlanetas(fechaHoy)
     )

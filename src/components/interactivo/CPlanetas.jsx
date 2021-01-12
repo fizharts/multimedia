@@ -1,3 +1,4 @@
+import { markerEjemplo } from './../../helpers/markerEjemplo';
 import { Stars } from 'drei';
 import React, { useEffect } from 'react'
 import { Suspense, useState } from 'react';
@@ -32,6 +33,7 @@ export const CPlanetas = () => {
   const { datos , markerRedux } = useSelector(state => state.planetas)
   const [bandera, setBandera] = useState(0)
   const dispatch = useDispatch()
+  const [p, setp] = useState([])
   const sp = new Howl( {
     src : SoundPlanetas
   } )
@@ -41,40 +43,19 @@ export const CPlanetas = () => {
             cameraPos: [18, 18, 18],
             name: "camaraCentral" ,
             loc : [] ,
+            id: 0 ,
             estatus_capacidad_hospitalaria : ""
         }
   ]
   const random = new Random()
-  const [markers] = useState([
-    {
-        position: [0, 0, 0],
-        cameraPos: [18, 18, 18],
-        name: "Titulo" 
-    },
-    {
-        position: [-12, 10, 2],
-        cameraPos: [3, 9, 2],
-        name: "Estado 1",
-    },
-    {
-        position: [0, 10, -7],
-        cameraPos: [0, 10, 9],
-        name: "Estado 2",
-    },
-    {
-        position: [0, 6, 2],
-        cameraPos: [9, 8, 14],
-        name: "Estado 3",
-    },
-    ]);
+
 
   let id = 1
   datos.forEach(dato => {
-    let uno = random.integer(-100,100)
-    let dos = random.integer(-100,100)
-    let tres = random.integer(-100,100)
-
-    
+    const uno = random.integer(-100,100)
+    const dos = random.integer(-100,100)
+    const tres = random.integer(-100,100)
+  
     markers2 = [
       ...markers2 ,
           {
@@ -89,25 +70,52 @@ export const CPlanetas = () => {
     id ++
   })
 
+  
+
+
+
 
   useEffect(() => {
     if( bandera === 1 ){
           dispatch( 
-        setMakers( 
+          setMakers( 
           markers2
-        )
-      )
+          )
+
           
+      )
+
+      let arrayDePrueba = datos.map(dato => {
+        const uno = random.integer(-100,100)
+        const dos = random.integer(-100,100)
+        const tres = random.integer(-100,100)
+    
+        return {
+          position:[uno , dos , tres],
+            cameraPos : [uno , dos , tres + 100],
+            name: dato.fields.nombre_hospital ,
+            id : id ,
+            loc : dato.fields.coordenadas ,
+            estatus_capacidad_hospitalaria :dato.fields.estatus_capacidad_hospitalaria
+        }
+      })
       
+      console.log(arrayDePrueba )  
+
+      setp(arrayDePrueba)
+        
     }
 
     setBandera(bandera +1 )
     
+
   
   }, [datos ])
+
+
+  console.log(p)
     
   
-
 
 
     const AnimatedNavigation = animated(Navigation);
@@ -134,9 +142,7 @@ export const CPlanetas = () => {
     })
 
     const  onNavigationItemClicked = (id ,  position , cameraPos) => {
-      
-      alert(position)
-      alert(cameraPos)
+
       sp.play()
 
     if (selectedItemIndex !== id && !isAnimating) {
@@ -147,20 +153,23 @@ export const CPlanetas = () => {
             cachedTarget: cameraValues.cachedTarget,
             pos: cameraPos,
             target: position,
-            autoRotate: id === 0 || id === 1,
+            autoRotate: id === 0 ,
+            
         });
         }
     }
 
+
+
     return (
         <div className="content">
           <div className="ui">
-          
-            <NavsHospitales onNavigationItemClicked={onNavigationItemClicked} markers={markers}/>
+            
+            <NavsHospitales onNavigationItemClicked={onNavigationItemClicked} markers={markerEjemplo}/>
         
           </div>
           {
-            markers.length === 0 ? null :
+            markers2.length === 0 ? null :
             <Canvas>
       
             <ambientLight />
@@ -172,12 +181,12 @@ export const CPlanetas = () => {
               cameraTarget={cameraSpring.target} />
               <CRoom 
                     position={[0, 0, 0]}
-                    markers2={ markers2 }
+                    markers2={ markerEjemplo }
                     />
               
-              {isAnimating && markers !== undefined ? null :
-                <CMarker markers={markers}
-                        markers2={ markers2 }
+              {isAnimating && markerEjemplo !== undefined ? null :
+                <CMarker markers={markerEjemplo}
+                        markers2={ markerEjemplo }
                         
                         selectedItemIndex={selectedItemIndex}
                         onNavigationItemClicked={onNavigationItemClicked}

@@ -1,0 +1,175 @@
+[33mcommit b1da765c2c54986dff1c80663817708828f09a94[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: julio picazo <jpicazo06@gmail.com>
+Date:   Tue Jan 12 12:09:49 2021 -0600
+
+    ya rotan los planetas y hay sonidos
+
+[33mcommit 5b0765be961aca05651ce8d542d8b0495c41637b[m
+Author: julio picazo <jpicazo06@gmail.com>
+Date:   Mon Jan 11 08:55:52 2021 -0600
+
+    nueva prueba docs
+
+[33mcommit fda9f7c84c3ae06da157d387224094ffcefb8e32[m
+Author: julio picazo <jpicazo06@gmail.com>
+Date:   Mon Jan 11 08:48:07 2021 -0600
+
+    build
+
+[33mcommit a22ae10061e7b426d1f7142bdaf0d92dc9339120[m
+Author: julio picazo <jpicazo06@gmail.com>
+Date:   Mon Jan 11 08:25:17 2021 -0600
+
+    p
+
+[33mcommit 576c4b05f95c6d955904a235c10177b3d809ff23[m
+Author: julio picazo <jpicazo06@gmail.com>
+Date:   Mon Jan 11 08:15:57 2021 -0600
+
+    estan los build listos
+
+[33mcommit f2af81998b814946a80a4f5585c4b3143d3724e6[m
+Author: julio picazo <jpicazo06@gmail.com>
+Date:   Mon Jan 11 08:11:49 2021 -0600
+
+    build completo
+
+[33mcommit 1250b0df2fb2f33efa0177eca671b9c49d65ecdc[m
+Author: JPicazo <juliopicazo06@gmail.com>
+Date:   Sat Jan 9 22:59:12 2021 -0600
+
+    ya con colores
+
+[33mcommit cc5d38148e99cab2f220c4f4033cfe9e7c08da19[m[33m ([m[1;32mdesc[m[33m)[m
+Author: julio picazo <jpicazo06@gmail.com>
+Date:   Tue Jan 5 15:50:23 2021 -0600
+
+    ya casi estan las etiquetas
+
+[33mcommit ec3f4150d7e7ed68dc3b2c3e679cd379005c47de[m
+Author: julio picazo <jpicazo06@gmail.com>
+Date:   Mon Jan 4 15:59:32 2021 -0600
+
+    los nombres completos
+
+[33mcommit 210403bcaba4a159f839a073b6cfb9694520e0b8[m
+Author: JPicazo <juliopicazo06@gmail.com>
+Date:   Sun Jan 3 23:48:27 2021 -0600
+
+    checando los datos
+
+[33mcommit c30f744c54eb60bed15b48b78cd4db55c24affc3[m
+Author: julio picazo <jpicazo06@gmail.com>
+Date:   Thu Dec 31 11:22:25 2020 -0600
+
+    ya empezamos a hacerlo dinamico
+
+[33mcommit 27a7def6299a4cfac278aa48442ddea1cdb45994[m
+Author: julio picazo <jpicazo06@gmail.com>
+Date:   Wed Dec 30 16:05:40 2020 -0600
+
+    colores a las esferas
+
+[33mcommit 2d68b29d07a09fc5ef6d6c276b1c740e6385794b[m
+Author: JPicazo <juliopicazo06@gmail.com>
+Date:   Tue Dec 29 22:06:39 2020 -0600
+
+    ya estan los datos en planetas
+
+[33mcommit e7bb4cf56ae314fc19ff6b37f241248ca787716b[m
+Merge: 9b8ca2d f4a19a2
+Author: julio picazo <jpicazo06@gmail.com>
+Date:   Tue Dec 29 13:58:54 2020 -0600
+
+    ya esta implementado Three
+
+[33mcommit 9b8ca2da6adfb3f6371a00be873b836de1dd26c9[m
+Author: julio picazo <jpicazo06@gmail.com>
+Date:   Tue Dec 29 07:39:19 2020 -0600
+
+    cambios guardados
+
+[33mcommit f4a19a2ef5094ab00e07f051c93cddcc60cfd452[m
+Author: JPicazo <juliopicazo06@gmail.com>
+Date:   Mon Dec 28 21:57:07 2020 -0600
+
+    ya con three
+
+[33mcommit 58e110daa1e2650a5efe221e85fbfbd6cedc0f7b[m
+Author: JPicazo <juliopicazo06@gmail.com>
+Date:   Sun Dec 27 13:04:54 2020 -0600
+
+    nombres hospitales
+
+[33mcommit e1cf67eb36e27478d0ab72cf9753a0d378e0f915[m
+Author: JPicazo <juliopicazo06@gmail.com>
+Date:   Sat Dec 26 23:48:37 2020 -0600
+
+    ya estan los nombres de los hospitales
+
+[33mcommit bf76e749a07c76c356d6382275bcb81b89db0687[m
+Author: julio picazo <jpicazo06@gmail.com>
+Date:   Thu Dec 24 12:49:23 2020 -0600
+
+    ya con  fechas
+
+[33mcommit 385872d7e53ecf1ab06b7853369a0f7ecfe8439e[m
+Author: julio picazo <jpicazo06@gmail.com>
+Date:   Wed Dec 23 16:02:01 2020 -0600
+
+    listo hospitales
+
+[33mcommit b499c1026a0f0bbbc4a9ef6add6c972173ddb010[m
+Merge: 66bd870 d0419c1
+Author: JPicazo <juliopicazo06@gmail.com>
+Date:   Tue Dec 22 21:03:24 2020 -0600
+
+    segmentado ya
+
+[33mcommit 66bd8708de286da7f76db82bfa13a54d1459d434[m
+Author: JPicazo <juliopicazo06@gmail.com>
+Date:   Tue Dec 22 17:59:55 2020 -0600
+
+    respaldo
+
+[33mcommit d0419c123a536da723399e1a272d2fe5ff90096b[m
+Author: julio picazo <jpicazo06@gmail.com>
+Date:   Tue Dec 22 16:01:58 2020 -0600
+
+    estan las bases
+
+[33mcommit 9a0e9da4bcd48f528e86ac77834abf54bde5de2e[m
+Author: julio picazo <jpicazo06@gmail.com>
+Date:   Mon Dec 21 16:01:25 2020 -0600
+
+    commit con indexstore
+
+[33mcommit b11784d6fad69f50f1f5af2b3b97d2063c38f685[m
+Author: julio picazo <jpicazo06@gmail.com>
+Date:   Fri Dec 18 15:53:37 2020 -0600
+
+    en la base de datos
+
+[33mcommit 6aebd4ae5e26b0cb645534024b7da6ec2fd36864[m
+Author: julio picazo <jpicazo06@gmail.com>
+Date:   Thu Dec 17 15:58:07 2020 -0600
+
+    mensaje
+
+[33mcommit 57e19b668311331fddb6992242b8da593f2daedf[m
+Author: julio picazo <jpicazo06@gmail.com>
+Date:   Thu Dec 17 15:50:14 2020 -0600
+
+    ya esta redux
+
+[33mcommit 3399308440b74769ae2b1418ad9a7cd937945466[m
+Author: julio picazo <jpicazo06@gmail.com>
+Date:   Tue Dec 15 14:12:10 2020 -0600
+
+    listo el router
+
+[33mcommit 451459a5a2104fab6ebba1a71421eede366249e3[m
+Author: julio picazo <jpicazo06@gmail.com>
+Date:   Tue Dec 15 08:41:14 2020 -0600
+
+    Initialize project using Create React App

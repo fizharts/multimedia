@@ -8,11 +8,11 @@ export const NavH = ( { markers , onNavigationItemClicked} ) => {
     return (
     <Fragment>
         {
-        markersRedux ? (
-            markersRedux.map(marker =>(
+            markers ? (
+                markers.map(marker =>(
                 <NavLink 
                 key = { marker.id } 
-                        id = { marker.id+1 }
+                        id = { marker.id }
                         name = { marker.name }
                         cameraPos={marker.cameraPos}
                         position={ marker.position }

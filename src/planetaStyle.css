@@ -117,12 +117,11 @@ body {
 }
 
 .text-overlay {
-    font-size: 8px;
+    font-size: 5px;
     padding: 0 !important;
     padding-left: 2px !important;
     color: white;
     background: #0000006e;
-    min-width: 7em;
     border-radius: 10px;
     text-align: left;
 }
