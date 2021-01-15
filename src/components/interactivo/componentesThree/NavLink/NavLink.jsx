@@ -17,11 +17,21 @@ export const NavLink = (props)  => {
     color : 'white'
   })
 
+  const handleOnMouseOver = (e)=> {
+    console.log( e )
+    alert('asdsad')
+  }
+
+  const onMouseLeaveS=() =>{
+    console.log("Event:MouseLeave");
+  }
+
   return (
     <AnimatedNavLink onPointerOver={e => setHovered(true)} 
                       onPointerOut={e => setHovered(false)} 
                       style={{...linkSpring}} 
-                      onClick={() => props.onNavLinkClicked(props.id , props.position , props.cameraPos)}>
+                      onClick={() => props.onNavLinkClicked(props.id , props.position , props.cameraPos)}
+                      onMouseEnter={e=>onMouseLeaveS(e)}>
       {props.name}
     </AnimatedNavLink>
   );

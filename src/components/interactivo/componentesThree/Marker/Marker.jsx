@@ -1,17 +1,29 @@
-import React from "react";
+import React, { } from "react";
 import { Html } from "drei";
 import Nav from "react-bootstrap/esm/Nav";
 import { useSpring, animated, config } from "react-spring";
+import start from '../../../../sounds/clickEs.mp3'
+import { Howl } from 'howler';
 
-export const  Marker = (props) =>  {
+export const Marker = (props) => {
 
+
+  
   const markerSpring = useSpring({
     opacity: 1,
     from: {
       opacity: 0,
     },
+    top: '-10px',
     config: config.slow,
   })
+
+  const sp = new Howl({
+    src: start
+  })
+  // sp.play()
+
+
 
   const infoSpring = useSpring({
     backgroundColor: 'rgba(0, 0, 0, 0.4)',
@@ -24,9 +36,10 @@ export const  Marker = (props) =>  {
 
   function onClick() {
     console.log(props)
-    props.onMarkerClicked(props.id , props.position , props.cameraPos);
-    
+    props.onMarkerClicked(props.id, props.position, props.cameraPos);
+
   }
+  // AIzaSyBL8XsAWI8IBe_ks49R_FgL9WzyAs-Usik
 
   return (
     <mesh position={props.position}>
@@ -38,9 +51,8 @@ export const  Marker = (props) =>  {
           </div>
         </animated.div>
         <animated.div className="info" style={infoSpring}>
-          <p>
-            Datos del hospital
-          </p>
+
+          {/* <Maps loc={ props.loc }/> */}
           {
             props.position
           }

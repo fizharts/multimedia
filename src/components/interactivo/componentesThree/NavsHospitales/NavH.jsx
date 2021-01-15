@@ -1,22 +1,24 @@
-import { useSelector } from 'react-redux';
 import React, { Fragment } from 'react'
 import { NavLink } from '../NavLink/NavLink';
 
 export const NavH = ( { markers , onNavigationItemClicked} ) => {
-
-    const { markersRedux } = useSelector(state => state.planetas)
+    const onMouseLeaveS=() =>{
+        console.log("Event:MouseLeave");
+    }
+    
     return (
     <Fragment>
         {
             markers ? (
                 markers.map(marker =>(
-                <NavLink 
+                <NavLink
                 key = { marker.id } 
                         id = { marker.id }
                         name = { marker.name }
                         cameraPos={marker.cameraPos}
                         position={ marker.position }
                         onNavLinkClicked= { onNavigationItemClicked}
+                        onMouseEnter={onMouseLeaveS}
                 />
             ))
         ) : null

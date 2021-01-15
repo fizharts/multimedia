@@ -6,6 +6,10 @@ export  const Menu = ({
   onMarkerClicked,
   onTitleClicked,
 }) => {
+
+  const handleOnMouseOver = (e)=> {
+    console.log( e )
+  }
   return (
     <div className="ui">
       <h2 className="title" onClick={() => onTitleClicked()}>
@@ -19,6 +23,7 @@ export  const Menu = ({
             <Nav.Link
               onClick={() => onMarkerClicked(id)}
               key={key}
+              onMouseLeave={(e)=>handleOnMouseOver(e)}
             >
               {marker.name}
             </Nav.Link>
