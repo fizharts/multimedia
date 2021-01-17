@@ -57,8 +57,7 @@ export const getHospitalesP = ( datos )=> {
             return record.fields.nombre_hospital
         })
         
-        let titulo = (records[0].datasetid).replace(/-/g , ' ')
-        console.log( titulo )
+     
     
         return async( dispatch )=> {
         
@@ -68,7 +67,7 @@ export const getHospitalesP = ( datos )=> {
         )
 
         dispatch(
-            setTitulo(titulo)
+            setTitulo('Datos Hospitalarios')
         )
 
         dispatch(
