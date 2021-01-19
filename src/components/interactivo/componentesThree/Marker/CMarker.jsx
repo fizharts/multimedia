@@ -35,7 +35,7 @@ export const CMarker = ({ markers, selectedItemIndex, onNavigationItemClicked, m
                     )
                 ) : null
             }
-            <Marker
+            {/* <Marker
                 position={markers[1].position}
                 name={markers[1].name}
                 id={1}
@@ -52,7 +52,7 @@ export const CMarker = ({ markers, selectedItemIndex, onNavigationItemClicked, m
                 name={markers[3].name}
                 id={3}
                 selected={selectedItemIndex}
-                onMarkerClicked={onNavigationItemClicked} />
+                onMarkerClicked={onNavigationItemClicked} /> */}
         </group>
 
     )

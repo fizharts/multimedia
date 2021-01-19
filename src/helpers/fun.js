@@ -1,6 +1,8 @@
+import { colores } from './colores';
 import { Random } from 'random-js';
 import { moment } from 'moment';
 import Axios from "axios"
+import { datosFijos } from './datosFijos';
 
 const random = new Random()
 
@@ -44,7 +46,13 @@ export const convertString = (...valores) => {
 export const losDatos = async (urlGeneral) => {
     const { data } = await Axios.get(urlGeneral)
     console.log(data)
-    return data
+    let dataF
+    if (data) {
+        dataF = data
+    }else{
+        dataF = datosFijos
+    }
+    return dataF
 }
 
 
@@ -158,6 +166,28 @@ export const crearMaker = (datos) => {
     return [
         markers2
     ]
+}
+
+
+export const colorH = (col) => {
+    let colorPlaneta
+    switch (col) {
+        case 'Crítica':
+        colorPlaneta = colores.rojo
+        break;
+        case 'Media':
+        colorPlaneta = colores.amarillo
+        break;
+        case 'Buena':
+        colorPlaneta = colores.verde
+        break;
+        default:
+        colorPlaneta = colores.verde
+        break;
+    }
+
+
+    return colorPlaneta
 }
 
 

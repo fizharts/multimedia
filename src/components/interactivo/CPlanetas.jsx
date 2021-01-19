@@ -58,7 +58,7 @@ export const CPlanetas = ({handleChangeDate}) => {
       ...markers2,
       {
         position: [uno, dos, tres],
-        cameraPos: [uno, dos, tres + 10],
+        cameraPos: [uno, dos, tres + 50],
         name: dato.fields.nombre_hospital,
         id: id,
         loc: dato.fields.coordenadas,
@@ -168,7 +168,7 @@ export const CPlanetas = ({handleChangeDate}) => {
             <ambientLight />
             <pointLight
               position={[100, 100, 100]}
-              intensity={2} />
+              intensity={1} />
             <AnimatedNavigation
               cameraPosition={cameraSpring.pos}
               cameraTarget={cameraSpring.target} />

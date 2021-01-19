@@ -1,9 +1,10 @@
-import React, { } from "react";
+import React, { Suspense } from "react";
 import { Html } from "drei";
 import Nav from "react-bootstrap/esm/Nav";
 import { useSpring, animated, config } from "react-spring";
 import start from '../../../../sounds/clickEs.mp3'
 import { Howl } from 'howler';
+import { Loading } from "../../../loaders/Loading";
 
 export const Marker = (props) => {
 
@@ -42,7 +43,8 @@ export const Marker = (props) => {
   // AIzaSyBL8XsAWI8IBe_ks49R_FgL9WzyAs-Usik
 
   return (
-    <mesh position={props.position}>
+    <Suspense fallback={Loading}>
+      <mesh position={props.position}>
       <Html scaleFactor={100}>
         <animated.div className="overlay" style={markerSpring} onClick={onClick}>
           <div className="circle box">{props.id}</div>
@@ -59,6 +61,7 @@ export const Marker = (props) => {
         </animated.div>
       </Html>
     </mesh>
+    </Suspense>
   );
 }
 
