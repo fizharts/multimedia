@@ -17,10 +17,7 @@ export const NavLink = (props)  => {
     color : 'white'
   })
 
-  const handleOnMouseOver = (e)=> {
-    console.log( e )
-    alert('asdsad')
-  }
+
 
   const onMouseLeaveS=() =>{
     console.log("Event:MouseLeave");

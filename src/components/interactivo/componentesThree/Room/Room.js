@@ -1,13 +1,15 @@
 import { colorH } from './../../../../helpers/fun';
 import { useFrame } from 'react-three-fiber';
-import { colores } from './../../../../helpers/colores';
 
 
-import * as THREE from 'three'
+
+// import * as THREE from 'three'
 import React, { useRef } from 'react'
 
-const quaternion = new THREE.Quaternion();
+// const quaternion = new THREE.Quaternion();
 export default function Room(props) {
+
+
   const group = useRef()
   const planet = useRef();
   useFrame(() => {
@@ -18,7 +20,7 @@ export default function Room(props) {
     group.current.children[0].children[0].children.forEach(item => {
       item.rotation.x += 0.07
       // item.position.x += 0.9
-      console.log(item.quaternion)
+      // console.log(item.quaternion)
     })
 
   });
@@ -48,7 +50,7 @@ export default function Room(props) {
               attach="material"
               metalness={1}
               shininess={1}
-              color={colores.amarillo} />
+              color={colorH()} />
           </mesh>
 
 

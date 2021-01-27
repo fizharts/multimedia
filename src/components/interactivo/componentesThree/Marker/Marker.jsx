@@ -2,8 +2,8 @@ import React, { Suspense } from "react";
 import { Html } from "drei";
 import Nav from "react-bootstrap/esm/Nav";
 import { useSpring, animated, config } from "react-spring";
-import start from '../../../../sounds/clickEs.mp3'
-import { Howl } from 'howler';
+// import start from '../../../../sounds/clickEs.mp3'
+// import { Howl } from 'howler';
 import { Loading } from "../../../loaders/Loading";
 
 export const Marker = (props) => {
@@ -19,9 +19,9 @@ export const Marker = (props) => {
     config: config.slow,
   })
 
-  const sp = new Howl({
-    src: start
-  })
+  // const sp = new Howl({
+  //   src: start
+  // })
   // sp.play()
 
 

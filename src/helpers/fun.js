@@ -191,5 +191,18 @@ export const colorH = (col) => {
 }
 
 
+export const setStorage = ( nombre , dato )=> {
+    let final = JSON.stringify(dato)
+    localStorage.setItem( nombre , final )
+}
+
+export const getStorage = ( nombre ) => {
+    let n = localStorage.getItem( nombre ) || '{}'
+    return [
+        JSON.parse( n )
+    ]
+}
+
+
 
 

@@ -6,7 +6,8 @@ const initialState = {
     "nombreHospitales" : [] ,
     "parametros" : [],
     "fecha" : {} ,
-    "markersRedux" : []
+    "markersRedux" : [] ,
+    "defunciones" : {}
 }
 
 export const PlanetasDuck = ( state = initialState , action) => {
@@ -43,6 +44,11 @@ export const PlanetasDuck = ( state = initialState , action) => {
                 ...state ,
                 markersRedux : action.payload
             }
+        case types.defunciones :
+            return {
+                ...state ,
+                defunciones : action.payload
+            }
         
 
         default: 
@@ -78,6 +84,13 @@ export const getHospitalesP = ( datos )=> {
         )
     }
 }
+
+export const defunciones = ( defunciones )=> ({
+    type : types.defunciones ,
+    payload : {
+        defunciones
+    }
+})
 
 export const setFechaPlanetas = ( fecha ) => ({
     type: types.fechaPlanetas ,
