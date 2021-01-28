@@ -98,7 +98,8 @@ body {
     justify-content: flex-start;
     align-items: center;
     min-width: 7em;
-    margin-top: 2px;
+    font-size:1em;
+    margin-top: -20px;
 }
 
 
@@ -108,8 +109,8 @@ body {
     width: 1.5em;
     height: 1.5em;
     border-radius: 250px;
-    font-size: 0.4em;
-    font-weight: 800;
+    font-size: 0.3em;
+    font-weight: 500;
     color: white;
     text-align: center;
     background: #0000006e;
@@ -117,13 +118,12 @@ body {
 }
 
 .text-overlay {
-    font-size: 5px;
+    font-size: 10px;
     padding: 0 !important;
     padding-left: 2px !important;
     color: white;
     background: #0000006e;
     border-radius: 10px;
-    text-align: left;
 }
 
 .box {

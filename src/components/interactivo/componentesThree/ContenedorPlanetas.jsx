@@ -1,10 +1,9 @@
 import { useEffect } from 'react';
-/* eslint-disable no-unused-vars */
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { getStorage, losDatos, setStorage } from '../../../helpers/fun'
 import { urlHospitales } from '../../../helpers/urls'
-import { getHospitalesP, setFechaPlanetas , defunciones } from '../../../redux/ducks/PlanetasDuck'
+import { getHospitalesP, setFechaPlanetas, defunciones } from '../../../redux/ducks/PlanetasDuck'
 import { CPlanetas } from '../CPlanetas'
 import '../../../planetaStyle.css'
 import { useDate } from '../../../helpers/hooks/useDate'
@@ -12,46 +11,51 @@ import { useDate } from '../../../helpers/hooks/useDate'
 export const ContenedorPlanetas = () => {
 
     const dispatch = useDispatch()
-
-    const [ fecha , handleChangeDate ] = useDate()
-    console.log(fecha)
-    const url = urlHospitales( 50 , fecha)
+    
+    const [fecha, handleChangeDate] = useDate()
+    const url = urlHospitales(50, fecha)
     useEffect(() => {
         try {
-            losDatos( url ).then(res => {
-                console.log(res.records)
-                if(!res.records) {
+            losDatos(url).then(res => {
+                if (res) {
+                    alert()
                     dispatch(
-                        getHospitalesP( res )
+                        getHospitalesP(res)
                     )
-                    setStorage( 'datos' , res )
-                }else {
-                    const [ datosS ] = getStorage('datos')
+                    setStorage('datos', res)
+                } else {
+                    alert()
+                    const [datosS] = getStorage('datos')
+                    console.log(datosS)
+                    datosS &&
                     dispatch(
-                        getHospitalesP( datosS )
+                        getHospitalesP(datosS)
                     )
                 }
 
-            losDatos( 'https://datos.cdmx.gob.mx/api/records/1.0/search/?dataset=actas-de-defuncion-en-el-registro-civil-de-la-ciudad-de-mexico&q=&rows=10&facet=sexo&facet=fec_defuncion&facet=estado&facet=causa&facet=alcaldia&facet=lugarmuerte' )
-                    .then(res=> {
-                        console.log( res.nhits )
-                        dispatch(
-                            defunciones(
-                                res.nhits
-                            )
-                        )
+                losDatos('https://datos.cdmx.gob.mx/api/records/1.0/search/?dataset=actas-de-defuncion-en-el-registro-civil-de-la-ciudad-de-mexico&q=&rows=10&facet=sexo&facet=fec_defuncion&facet=estado&facet=causa&facet=alcaldia&facet=lugarmuerte')
+                    .then(res => {
+                        // console.log(res.nhits)
+                        if( res ){
+                            dispatch(
+                                defunciones(
+                                    res.nhits
+                                ) 
+                                )
+                        }
+                        
                     })
-                
+
             })
-    
+
             dispatch(
                 setFechaPlanetas(fecha)
             )
         } catch (error) {
             console.log(error)
         }
-        
-    }, [fecha , url , dispatch])
+
+    }, [fecha, url, dispatch])
 
     return (
         <div>

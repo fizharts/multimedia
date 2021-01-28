@@ -44,14 +44,20 @@ export const convertString = (...valores) => {
 
 
 export const losDatos = async (urlGeneral) => {
-    const { data } = await Axios.get(urlGeneral)
-    console.log(data)
     let dataF
+    try {
+        const { data } = await Axios.get(urlGeneral)
+    console.log(data)
+    
     if (data) {
         dataF = data
-    }else{
-        dataF = datosFijos
+    } else {
+        dataF = []
+    } 
+    } catch (error) {
+        console.log(error)
     }
+
     return dataF
 }
 
@@ -173,17 +179,17 @@ export const colorH = (col) => {
     let colorPlaneta
     switch (col) {
         case 'Crítica':
-        colorPlaneta = colores.rojo
-        break;
+            colorPlaneta = colores.rojo
+            break;
         case 'Media':
-        colorPlaneta = colores.amarillo
-        break;
+            colorPlaneta = colores.amarillo
+            break;
         case 'Buena':
-        colorPlaneta = colores.verde
-        break;
+            colorPlaneta = colores.verde
+            break;
         default:
-        colorPlaneta = colores.verde
-        break;
+            colorPlaneta = colores.verde
+            break;
     }
 
 
@@ -191,15 +197,15 @@ export const colorH = (col) => {
 }
 
 
-export const setStorage = ( nombre , dato )=> {
+export const setStorage = (nombre, dato) => {
     let final = JSON.stringify(dato)
-    localStorage.setItem( nombre , final )
+    localStorage.setItem(nombre, final)
 }
 
-export const getStorage = ( nombre ) => {
-    let n = localStorage.getItem( nombre ) || '{}'
+export const getStorage = (nombre) => {
+    let n = localStorage.getItem(nombre) || '{}'
     return [
-        JSON.parse( n )
+        JSON.parse(n)
     ]
 }
 

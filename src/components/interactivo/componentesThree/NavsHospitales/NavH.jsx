@@ -14,7 +14,7 @@ export const NavH = ( { markers , onNavigationItemClicked} ) => {
                 <NavLink
                 key = { marker.id } 
                         id = { marker.id }
-                        name = { marker.name }
+                        name = { `${ marker.id }- ${ marker.name }` }
                         cameraPos={marker.cameraPos}
                         position={ marker.position }
                         onNavLinkClicked= { onNavigationItemClicked}

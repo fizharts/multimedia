@@ -1,75 +1,75 @@
 import { types } from "../types/types";
 
 const initialState = {
-    "titulo" : '' ,
-    "datos" : [],
-    "nombreHospitales" : [] ,
-    "parametros" : [],
-    "fecha" : {} ,
-    "markersRedux" : [] ,
-    "defunciones" : {}
+    "titulo": '',
+    "datos": [],
+    "nombreHospitales": [],
+    "parametros": [],
+    "fecha": {},
+    "markersRedux": [],
+    "defunciones": {}
 }
 
-export const PlanetasDuck = ( state = initialState , action) => {
-    switch ( action.type ) {
-        case  types.datosPlanetas :
+export const PlanetasDuck = (state = initialState, action) => {
+    switch (action.type) {
+        case types.datosPlanetas:
             return {
-                ...state ,
-                datos : action.payload 
+                ...state,
+                datos: action.payload
             }
-        case types.tituloPlanetas :
+        case types.tituloPlanetas:
             return {
-                ...state ,
-                titulo : action.payload
-                
-            }
-        case types.nombreHospitalesPlanetas :
-            return {
-                ...state ,
-                nombreHospitales : action.payload
-                
-            }
-        case types.parametrosPlanetas :
-            return {
-                ...state ,
-                parametros : action.payload
-            }
-        case types.fechaPlanetas :
-            return {
-                ...state ,
-                fecha : action.payload
-            }
-        case types.makers :
-            return {
-                ...state ,
-                markersRedux : action.payload
-            }
-        case types.defunciones :
-            return {
-                ...state ,
-                defunciones : action.payload
-            }
-        
+                ...state,
+                titulo: action.payload
 
-        default: 
-        return state
+            }
+        case types.nombreHospitalesPlanetas:
+            return {
+                ...state,
+                nombreHospitales: action.payload
+
+            }
+        case types.parametrosPlanetas:
+            return {
+                ...state,
+                parametros: action.payload
+            }
+        case types.fechaPlanetas:
+            return {
+                ...state,
+                fecha: action.payload
+            }
+        case types.makers:
+            return {
+                ...state,
+                markersRedux: action.payload
+            }
+        case types.defunciones:
+            return {
+                ...state,
+                defunciones: action.payload
+            }
+
+
+        default:
+            return state
     }
 }
 
-export const getHospitalesP = ( datos )=> {
-    
-    const { records , parameters:{facet} } = datos
-        const nombresH = records.map(record=> {
-            return record.fields.nombre_hospital
-        })
-        
-     
-    
-        return async( dispatch )=> {
-        
-        
+export const getHospitalesP = (datos) => {
+
+    const { records, parameters: { facet } } = datos
+    const nombresH = records.map(record => {
+        return record.fields.nombre_hospital
+    })
+
+
+
+    return async (dispatch) => {
+
+
         dispatch(
-            setHospitalesp( records )
+            setHospitalesp(records)
         )
 
         dispatch(
@@ -77,54 +77,54 @@ export const getHospitalesP = ( datos )=> {
         )
 
         dispatch(
-            setNombresH( nombresH )
+            setNombresH(nombresH)
         )
         dispatch(
-            setParametrosH( facet )
+            setParametrosH(facet)
         )
     }
 }
 
-export const defunciones = ( defunciones )=> ({
-    type : types.defunciones ,
-    payload : {
+export const defunciones = (defunciones) => ({
+    type: types.defunciones,
+    payload: {
         defunciones
     }
 })
 
-export const setFechaPlanetas = ( fecha ) => ({
-    type: types.fechaPlanetas ,
-    payload : fecha
+export const setFechaPlanetas = (fecha) => ({
+    type: types.fechaPlanetas,
+    payload: fecha
 })
 
-export const setMakers = ( makers ) => ({
-    type : types.makers ,
-    payload : makers
+export const setMakers = (makers) => ({
+    type: types.makers,
+    payload: makers
 })
 
-const setHospitalesp = ( hospitales ) =>({
-    type: types.datosPlanetas ,
-    payload : hospitales
+export const setHospitalesp = (hospitales) => ({
+    type: types.datosPlanetas,
+    payload: hospitales
 })
 
-const setTitulo = ( titulo ) => (
+export const setTitulo = (titulo) => (
     {
-        type : types.tituloPlanetas,
-        payload : titulo
+        type: types.tituloPlanetas,
+        payload: titulo
     }
 )
 
-const setNombresH = ( nombres ) => (
+const setNombresH = (nombres) => (
     {
-        type: types.nombreHospitalesPlanetas ,
-        payload : nombres
+        type: types.nombreHospitalesPlanetas,
+        payload: nombres
     }
 )
 
-const setParametrosH = ( parametros ) => (
+const setParametrosH = (parametros) => (
     {
-        type : types.parametrosPlanetas ,
-        payload : parametros
+        type: types.parametrosPlanetas,
+        payload: parametros
     }
 )
 

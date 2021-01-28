@@ -18,11 +18,8 @@ export const useDate = (initialDate = nuevaFecha) => {
 
     let tipoFecha = initialDate.replace(/-/g, '%2F')
     const [fechaHoy, setfechaHoy] = useState(tipoFecha)
-
     const handleInputChange = ({ target }) => {
-
         setfechaHoy(target.value);
-
     }
 
     return [

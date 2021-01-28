@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense , useState } from "react";
 import { Html } from "drei";
 import Nav from "react-bootstrap/esm/Nav";
 import { useSpring, animated, config } from "react-spring";
@@ -8,7 +8,7 @@ import { Loading } from "../../../loaders/Loading";
 
 export const Marker = (props) => {
 
-
+  const [fuente, setFuente] = useState('')
   
   const markerSpring = useSpring({
     opacity: 1,
@@ -19,10 +19,6 @@ export const Marker = (props) => {
     config: config.slow,
   })
 
-  // const sp = new Howl({
-  //   src: start
-  // })
-  // sp.play()
 
 
 
@@ -37,7 +33,11 @@ export const Marker = (props) => {
 
   function onClick() {
     console.log(props)
+
     props.onMarkerClicked(props.id, props.position, props.cameraPos);
+    setFuente({
+      fontSize:'4px!important;'
+    })
 
   }
   // AIzaSyBL8XsAWI8IBe_ks49R_FgL9WzyAs-Usik
@@ -49,7 +49,7 @@ export const Marker = (props) => {
         <animated.div className="overlay" style={markerSpring} onClick={onClick}>
           <div className="circle box">{props.id}</div>
           <div className="box">
-            <Nav.Link className="text-overlay">{props.name}</Nav.Link>
+            <Nav.Link className="text-overlay" style={infoSpring}>{props.name}</Nav.Link>
           </div>
         </animated.div>
         <animated.div className="info" style={infoSpring}>

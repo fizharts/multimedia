@@ -43,7 +43,7 @@ const random = new Random()
 
 export const CPlanetas = ({handleChangeDate}) => {
   let id = 1
-  const { datos , defunciones } = useSelector(state => state.planetas)
+  const { datos } = useSelector(state => state.planetas)
   const [bandera, setBandera] = useState(0)
   const [cambiarDatos, setCambiarDatos] = useState([])
   const dispatch = useDispatch()
@@ -104,7 +104,8 @@ export const CPlanetas = ({handleChangeDate}) => {
     }
 
     setBandera(bandera + 1)
-  }, [bandera,datos , dispatch , id])
+  }, [datos])
+
   console.log( cambiarDatos )
 
   const AnimatedNavigation = animated(Navigation);
@@ -196,7 +197,7 @@ export const CPlanetas = ({handleChangeDate}) => {
             <Stars
               radius={100}
               depth={100}
-              count={70000}
+              count={10000}
               factor={6}
               saturation={0}
               fade={true} />
