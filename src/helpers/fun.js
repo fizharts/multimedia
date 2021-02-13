@@ -90,18 +90,18 @@ export const alertas = (estatus_capacidad_hospitalaria) => {
     switch (estatus_capacidad_hospitalaria) {
         case 'Crítica':
             return {
-                backgroundColor: 'red',
+                backgroundColor: colores.rojo,
                 color: 'white'
             }
 
         case 'Media':
             return {
-                backgroundColor: '#f0ad4e',
+                backgroundColor: colores.amarillo,
                 color: 'black'
             }
         case 'Buena':
             return {
-                backgroundColor: '#5cb85c',
+                backgroundColor: colores.verde,
                 color: 'white'
             }
 

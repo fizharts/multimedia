@@ -16,6 +16,8 @@ import { CMarker } from './componentesThree/Marker/CMarker';
 import { setMakers } from '../../redux/ducks/PlanetasDuck';
 import { CRoom } from './componentesThree/Room/CRoom';
 import SoundPlanetas from '../../sounds/clickEs.mp3'
+// import fondo from '../../sounds/fondo.mp3';
+
 import { Howl } from 'howler';
 
 
@@ -28,18 +30,21 @@ extend({ OrbitControls })
 const sp = new Howl({
   src: SoundPlanetas
 })
+
+
 let markers2 = [
   {
     position: [0, 0, 0],
     cameraPos: [18, 18, 18],
-    name: "camaraCentral",
+    name: "Reiniciar",
     loc: [],
     id: 0,
     estatus_capacidad_hospitalaria: ""
   }
 ]
 const random = new Random()
-
+// fondoS.play()
+// fondoS.volume(0.3)
 
 export const CPlanetas = ({handleChangeDate}) => {
   let id = 1
@@ -47,6 +52,7 @@ export const CPlanetas = ({handleChangeDate}) => {
   const [bandera, setBandera] = useState(0)
   const [cambiarDatos, setCambiarDatos] = useState([])
   const dispatch = useDispatch()
+
 
 
   datos.forEach(dato => {
@@ -132,7 +138,9 @@ export const CPlanetas = ({handleChangeDate}) => {
   })
 
   const onNavigationItemClicked = (id, position, cameraPos) => {
-
+    console.log(
+      id, position, cameraPos
+    )
     sp.play()
 
     if (selectedItemIndex !== id && !isAnimating) {
@@ -197,7 +205,7 @@ export const CPlanetas = ({handleChangeDate}) => {
             <Stars
               radius={100}
               depth={100}
-              count={10000}
+              count={20000}
               factor={6}
               saturation={0}
               fade={true} />

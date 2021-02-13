@@ -1,3 +1,4 @@
+import { datosFijos } from './../../helpers/datosFijos';
 import { formatearFechas, convertirFecha } from './../../helpers/fun';
 import { parametrosHospitales } from '../../helpers/parametrosHopitales';
 import { types } from './../types/types';
@@ -58,7 +59,7 @@ export const hospitalesReducer = ( state = initialState , action ) => {
 
 export const getDatosH = ( datosCompletos )=> {
 
-    const { records } = datosCompletos
+    const { records } = datosFijos
     console.log(records)
     return async( dispatch , getState  )=> {
 

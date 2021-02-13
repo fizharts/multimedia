@@ -14,40 +14,47 @@ export const ContenedorHospitales = () => {
 
 
     const { numeroRegistrosHospitales } = useSelector(state => state.hospitales)
-    
+
     useEffect(() => {
-        
+
         const hoy = new Date()
-        const [ hoyF ] = formatearFechas( hoy )
+        const [hoyF] = formatearFechas(hoy)
         console.log(hoyF);
         try {
             dispatch(
                 fechaStageH()
             )
-            const url = urlHospitales( numeroRegistrosHospitales , '2020%2F1%2F1')
-            console.log(url )
-            losDatos( url ).then(result => {
-                    
+            const url = urlHospitales(numeroRegistrosHospitales, '2020%2F1%2F1')
+            console.log(url)
+            losDatos(url).then(result => {
+
                 dispatch(
-                    getDatosH( result )
+                    getDatosH(result)
                 )
-                            
-        
+
+
             })
         } catch (e) {
-        
+
         }
-    },[dispatch , numeroRegistrosHospitales])
+    }, [dispatch, numeroRegistrosHospitales])
 
 
     return (
 
-        <div style={{
-            backgroundColor:'white'
-        }}>
-    
-            <HospitalesComponent/>
-    
+        <div>
+            <div className="row">
+                <div className="col-2"></div>
+                <div className="col-8">
+                    <HospitalesComponent />
+
+                </div>
+                <div className="col-2"></div>
+
+
+            </div>
+
+
         </div>
     )
 }

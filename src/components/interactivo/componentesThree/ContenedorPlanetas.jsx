@@ -18,13 +18,13 @@ export const ContenedorPlanetas = () => {
         try {
             losDatos(url).then(res => {
                 if (res) {
-                    alert()
+                    // alert()
                     dispatch(
                         getHospitalesP(res)
                     )
                     setStorage('datos', res)
                 } else {
-                    alert()
+                    // alert()
                     const [datosS] = getStorage('datos')
                     console.log(datosS)
                     datosS &&

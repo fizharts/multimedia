@@ -17,7 +17,8 @@ export const types = {
     parametrosPlanetas : '[dataPlanetas] parametros',
     fechaPlanetas : '[dataPlanetas] fechas' ,
     makers : '[dataPlanetas] makers',
-    defunciones : '[dataPlanetas] def'
+    defunciones : '[dataPlanetas] def',
+    sonidos : '[dataPlanetas] son'
 
     
 }

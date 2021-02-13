@@ -27,7 +27,7 @@ export const Marker = (props) => {
     display: 'flex',
     transform: props.id === props.selected ? 'scale(1)' : 'scale(0)',
     from: {
-      transform: 'scale(0)'
+      transform: 'scale(1)'
     }
   })
 
@@ -45,7 +45,7 @@ export const Marker = (props) => {
   return (
     <Suspense fallback={Loading}>
       <mesh position={props.position}>
-      <Html scaleFactor={100}>
+      <Html scaleFactor={50}>
         <animated.div className="overlay" style={markerSpring} onClick={onClick}>
           <div className="circle box">{props.id}</div>
           <div className="box">
@@ -54,10 +54,12 @@ export const Marker = (props) => {
         </animated.div>
         <animated.div className="info" style={infoSpring}>
 
-          {/* <Maps loc={ props.loc }/> */}
-          {
-            props.position
+       {/*    {
+            props.position[0]  
           }
+          {
+            
+          } */}
         </animated.div>
       </Html>
     </mesh>

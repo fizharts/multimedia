@@ -12,7 +12,7 @@ export const NavLink = (props)  => {
     transform: hovered ? 'scale(1.1)' : 'scale(1)',
     padding: 3,
     margin: '0.5rem 1rem',
-    borderRadius: '5px',
+    borderRadius: '30px',
     backgroundColor: hovered ? 'rgba(0, 0, 0, 0.4)' : 'rgba(0, 0, 0, 0)',
     color : 'white'
   })

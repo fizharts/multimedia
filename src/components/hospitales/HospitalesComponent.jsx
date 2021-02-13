@@ -6,10 +6,11 @@ import { Hospital } from './Hospital';
 import { ParametrosHospital } from './ParametrosHospital';
 import { convertirFecha, losDatos } from '../../helpers/fun';
 import { urlHospitales } from '../../helpers/urls';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+
 
 
 export const HospitalesComponent = () => {
-
     // https://github.com/dieguezguille/ThreeAct-Test
     const {datosH , parametrosH , nombresHospitales , fechaHInput} = useSelector(state => state.hospitales)
     const dispatch = useDispatch()
@@ -46,9 +47,18 @@ export const HospitalesComponent = () => {
     return (
         <div className="m-5">
     
-            <h1>Hospitales</h1>
+            <h1 className="text-white">
+                <Link to="/planetas" style={{
+                    textDecoration:"none!important" ,
+                    color:"white"
+                }}>
+                    Hospitales
+                </Link>    
+            </h1>
+        
                                 <div className="row">
-                    <div className="form-group">
+                
+                    {/* <div className="form-group">
                         <label htmlFor="exampleSelect">Buscar por hospital</label>
                         <select className="custom-select" id="exampleSelect">
                             {
@@ -61,11 +71,11 @@ export const HospitalesComponent = () => {
                                 })
                             }
                         </select>
-                    </div>
+                    </div> */}
 
     
 
-                <input 
+            {/*     <input 
                     type="number" 
                     name="Numberr" 
                     id="inputNumberr" 
@@ -78,18 +88,18 @@ export const HospitalesComponent = () => {
                     // onChange={ (e)=> handleChange(e) }
 
                     />
-
-                    <input className="form-control" onChange={(e)=> handleChange(e) }  type="date" />
+ */}
+                    {/* <input className="form-control" onChange={(e)=> handleChange(e) }  type="date" /> */}
 
                 </div>
+            
             <div className="table-responsive" style={ {
                 height: '80vh'
             } }>
-            <table className="table table-hover   table-dark ">
-            <thead style={{
-            
-                backgroundColor:'#292b2c'
+            <table className="table table-hover   table-light " style={{
+                opacity:'0.9'
             }}>
+            <thead className="thead-dark text-white bg-dark">
                 <tr>
                     { 
                         <Fragment>
@@ -97,7 +107,8 @@ export const HospitalesComponent = () => {
                         </Fragment>
                     
                     }
-                </tr>
+                
+                    </tr>
             
             </thead>
             <tbody>

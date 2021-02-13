@@ -1,3 +1,4 @@
+import { datosFijos } from './../../helpers/datosFijos';
 import { types } from "../types/types";
 
 const initialState = {
@@ -7,7 +8,8 @@ const initialState = {
     "parametros": [],
     "fecha": {},
     "markersRedux": [],
-    "defunciones": {}
+    "defunciones": {},
+    "sonido" : false
 }
 
 export const PlanetasDuck = (state = initialState, action) => {
@@ -49,6 +51,11 @@ export const PlanetasDuck = (state = initialState, action) => {
                 ...state,
                 defunciones: action.payload
             }
+        case types.sound :
+            return {
+                ...state ,
+                sonido : action.payload
+            }
 
 
         default:
@@ -57,8 +64,8 @@ export const PlanetasDuck = (state = initialState, action) => {
 }
 
 export const getHospitalesP = (datos) => {
+    const { records, parameters: { facet } } = datosFijos
 
-    const { records, parameters: { facet } } = datos
     const nombresH = records.map(record => {
         return record.fields.nombre_hospital
     })
@@ -89,6 +96,13 @@ export const defunciones = (defunciones) => ({
     type: types.defunciones,
     payload: {
         defunciones
+    }
+})
+
+export const setSound = (sound) => ({
+    type : types.sonidos,
+    payload:{
+        sound
     }
 })
 
